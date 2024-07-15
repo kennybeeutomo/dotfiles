@@ -1,0 +1,22 @@
+alias grep='grep --color=auto'
+alias more='less'
+
+alias ls='eza -hF --color=auto'
+alias lr='ls -R'
+alias ll='ls -l'
+alias la='ll -A'
+alias lx='ll -BX'
+alias lz='ll -rS'
+alias lt='ll -rt'
+alias lm='la | more'
+
+alias fehbg='feh --bg-fill'
+alias rmenu='rofi -dmenu'
+
+alias gengrubcfg='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+
+alias cls=' echo -ne "\033c"'
+
+alias cd='z'
+
+alias cat='bat'

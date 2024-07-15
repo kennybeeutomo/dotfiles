@@ -1,0 +1,155 @@
+set $mod Mod4
+
+# --------------------------[ BEFORE EXECS ]--------------------------
+exec_always --no-startup-id xrandr --output Virtual1 --mode 1366x768
+exec_always --no-startup-id xset r rate 250 30
+exec_always --no-startup-id ~/.fehbg
+
+# --------------------------[ FONTS ]--------------------------
+font pango:JetBrainsMono Nerd Font 10px
+
+# --------------------------[ DEX ]--------------------------
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex --autostart --environment i3
+
+# --------------------------[ VOLUME ]--------------------------
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# --------------------------[ MOUSE ]--------------------------
+floating_modifier $mod
+tiling_drag modifier
+focus_follows_mouse no
+
+# --------------------------[ EXEC BINDS ]--------------------------
+bindsym $mod+Return			exec --no-startup-id 	alacritty
+bindsym $mod+Shift+Return	exec --no-startup-id 	alacritty --class Alacritty-float
+bindsym $mod+period			exec --no-startup-id 	rofi -show drun
+bindsym $mod+r				exec --no-startup-id 	rofi -show run
+bindsym $mod+w				exec --no-startup-id	~/.config/rofi/scripts/fehmenu.sh
+bindsym $mod+q				exec --no-startup-id	~/.config/rofi/scripts/powermenu.sh
+
+bindsym $mod+p kill
+
+# --------------------------[ NAVIGATION ]--------------------------
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# --------------------------[ SPLITTING ]--------------------------
+bindsym $mod+v split h
+bindsym $mod+c split v
+
+# --------------------------[ WINDOW STATES ]--------------------------
+bindsym $mod+f fullscreen toggle
+bindsym $mod+space floating toggle
+bindsym $mod+Shift+space focus mode_toggle
+
+for_window [class="Alacritty-float"] floating toggle
+
+# --------------------------[ WORKSPACES ]--------------------------
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+
+# --------------------------[ RESTART/SHUTDOWN ]--------------------------
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec i3-msg exit
+
+# --------------------------[ RESIZE ]--------------------------
+set $resizeSpeed 2
+
+bindsym $mod+Control+h resize shrink width $resizeSpeed px or $resizeSpeed ppt
+bindsym $mod+Control+j resize grow height $resizeSpeed px or $resizeSpeed ppt
+bindsym $mod+Control+k resize shrink height $resizeSpeed px or $resizeSpeed ppt
+bindsym $mod+Control+l resize grow width $resizeSpeed px or $resizeSpeed ppt
+
+# --------------------------[ BAR ]--------------------------
+# bar {
+# 	i3bar_command i3bar --transparency
+#	i3status_command i3status
+# 		position top
+# 		font pango:JetBrainsMono Nerd Font 10px
+# 		colors {
+# 			background #021727cc
+# 			statusline #d6deeb
+# 			separator #5f7e97
+#
+# 			# CLASS				BORDER	BACKGROUND	TEXT
+# 			focused_workspace	#5f7e97	#5f7e97bb	#d6deeb
+# 			active_workspace	#20395d	#20395dbb	#d6deeb
+# 			inactive_workspace 	#20395d	#20395dbb	#d6deeb
+# 			urgent_workspace	#e2b93d	#e2b93dbb	#d6deeb
+# 		}
+# 		workspace_min_width 20
+# 		padding 1px 7px 1px 0px
+# }
+
+exec --no-startup-id polybar &
+bindsym $mod+Shift+b exec --no-startup-id restart.sh polybar
+
+# --------------------------[ GAPS ]--------------------------
+set $innergaps 5
+set $outergaps 2
+
+gaps inner $innergaps
+gaps outer $outergaps
+
+bindsym $mod+plus gaps inner current minus 1, gaps outer current minus 1
+bindsym $mod+minus gaps inner current plus 1, gaps outer current plus 1
+bindsym $mod+0 gaps inner current set $innergaps, gaps outer current set $outergaps
+
+# for_window [class="firefox"] gaps outer 0
+# for_window [class="firefox"] gaps inner 0
+
+workspace 2 gaps inner 0
+workspace 2 gaps outer 0
+
+# --------------------------[ BORDER ]--------------------------
+default_border pixel
+default_floating_border pixel
+
+for_window [class="GLava"] border none
+for_window [class="firefox"] border none
+
+# --------------------------[ COLORS ]--------------------------
+# CLASS					border	background	text	indicator	child_border
+client.focused			#092135	#021727		#d6deeb	#78ccf0		#82aaff
+client.focused_inactive	#092135	#021727		#d6deeb	#78ccf0		#395a75
+client.unfocused		#092135	#021727		#d6deeb	#78ccf0		#20395d
+client.urgent			#092135	#021727		#e2b93d	#78ccf0		#e2b93d
+client.placeholder		#000000	#021727		#d6deeb	#000000		#5f7e97
+client.background		#021727
+
+# --------------------------[ AFTER EXECS ]--------------------------
+exec_always --no-startup-id picom &
+
+#exec --no-startup-id xrandr --output Virtual1 --mode 1366x768 &
+#exec --no-startup-id xset r rate 250 30 &
+#exec --no-startup-id ~/.fehbg &
+#exec --no-startup-id xcompmgr &
