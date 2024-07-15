@@ -1,4 +1,4 @@
-import = [ "~/dotfiles/.config/alacritty/themes/themes/night_owl.toml" ]
+import = [ "~/.config/alacritty/themes/themes/night_owl.toml" ]
 
 [font]
 bold = { family = 'JetBrainsMono Nerd Font', style = 'Bold' }
