@@ -1,6 +1,6 @@
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=1000000
+SAVEHIST=1000000
 setopt hist_ignore_space
 setopt autocd nomatch
 
