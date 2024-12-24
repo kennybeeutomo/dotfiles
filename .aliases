@@ -20,3 +20,7 @@ alias cls=' echo -ne "\033c"'
 alias cd='z'
 
 alias cat='bat'
+
+alias swww-img='swww img -t grow --transition-pos top-right --transition-step 10 --transition-fps 60 --transition-duration 1'
+
+alias wwal='wal --cols16 lighten -n -s -i'

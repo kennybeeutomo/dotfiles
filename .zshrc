@@ -27,3 +27,6 @@ eval "$(zoxide init zsh)"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+chwal () {
+	swww-img $1 && wwal $1 --saturate ${2:-0.4} -q
+}
