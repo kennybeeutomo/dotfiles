@@ -1,0 +1,38 @@
+alias grep='grep --color=auto'
+alias more='less'
+
+alias ls='eza -hF --color=auto'
+alias lr='ls -R'
+alias ll='ls -l'
+alias la='ll -A'
+alias lx='ll -BX'
+alias lz='ll -rS'
+alias lt='ll -rt'
+alias lm='la | more'
+
+alias tree='eza --tree'
+
+alias fehbg='feh --bg-fill'
+alias rmenu='rofi -dmenu'
+
+alias gengrubcfg='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+
+alias cls=' echo -ne "\033c"'
+
+alias cd='z'
+
+alias cat='bat'
+
+alias man='man -P nvimpager'
+
+alias fetch='fastfetch'
+
+alias trans="trans -pager nvimpager"
+
+alias snvim="sudo -E nvim"
+
+alias nmconnect='nmcli --ask device wifi connect'
+
+alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
+
+alias wayvnc='wayvnc -d -v -g -p'

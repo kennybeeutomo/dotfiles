@@ -1,0 +1,29 @@
+swww-img() {
+	swww img -t grow --transition-pos top-right --transition-step 1 --transition-fps 144 --transition-duration 0.25 "$1"
+}
+
+pickimg() {
+	swiv -t -o -b -N pickimg "$1"
+}
+
+wwal() {
+	local backend=$(cat ~/.scripts/options/walbackend)
+	local saturation=$(cat ~/.scripts/options/walsaturation)
+	wal --cols16 lighten --backend "$backend" --saturate "$saturation" -n -s -i "$1"
+}
+
+pywal() {
+	wwal "$1" || return 1
+	wbctl.sh reload
+	pywalfox update
+	killall -SIGUSR1 nvim -q
+}
+
+chwal() {
+	pywal "$1"
+	swww-img "$1"
+}
+
+touchx() {
+	touch "$@" && chmod +x "$@"
+}

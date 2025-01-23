@@ -1,0 +1,10 @@
+[Unit]
+Description=Load Carla Rack JACK host
+
+[Service]
+Environment=PIPEWIRE_LINK_PASSIVE=true
+Type=exec
+ExecStart=/usr/bin/carla --no-gui /home/kenny/Documents/Carla/calfReverb.carxp
+
+[Install]
+WantedBy=default.target

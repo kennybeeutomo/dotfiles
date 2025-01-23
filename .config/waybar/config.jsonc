@@ -1,34 +1,31 @@
-// -*- mode: jsonc -*-
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 15, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 10, // Gaps between modules (4px)
-    // Choose the order of the modules
+    // "layer": "top",
+    //"position": "bottom",
+    //"height": 30,
+    //"width": 1280,
+    //"spacing": 0,
 	"reload-style-on-change": true,
+
+	// MODULES
     "modules-left": [
         "hyprland/workspaces",
-        "hyprland/submap"
+		"tray",
     ],
     "modules-center": [
+        "network",
     ],
     "modules-right": [
-        //"mpd",
-        //"idle_inhibitor",
-        "pulseaudio",
-        "network",
-        //"power-profiles-daemon",
-        //"cpu",
-        //"memory",
-        //"temperature",
-        //"backlight",
+		"mpd",
+		"cava",
+        "wireplumber",
+        "cpu",
+        "memory",
+        "temperature",
         "battery",
-        //"battery#bat2",
-        "clock"
-        //"tray",
-        //"custom/power"
+        "clock",
     ],
+
+	// MODULE CONFIG
 	"hyprland/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": true,
@@ -37,24 +34,16 @@
 	"hyprland/submap": {
 		"format": "<span style=\"italic\">{}</span>"
 	},
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
     "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 5,
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+        "format-disconnected": "Disconnected 󰝛",
+        "format-stopped": "󰝛",
+        "unknown-tag": "?",
+        "interval": 1,
         "consume-icons": {
             "on": " "
         },
         "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
             "on": " "
         },
         "repeat-icons": {
@@ -73,8 +62,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": " ",
+            "deactivated": " "
         }
     },
     "tray": {
@@ -82,7 +71,6 @@
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -91,15 +79,16 @@
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}%  "
     },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+		"interval": 1,
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""]
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -114,15 +103,13 @@
         },
         "format": "{capacity}% {icon}",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% 󰂄",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
+        "format-icons": [" ", " ", " ", " ", " "],
+		"interval": 1,
     },
     "power-profiles-daemon": {
       "format": "{icon}",
@@ -135,21 +122,26 @@
         "power-saver": ""
       }
     },
+	"wireplumber": {
+		"format": " {volume}%",
+		"format-muted": "󰝟"
+	},
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "{icon} {essid} {bandwidthUpBytes}  | {bandwidthDownBytes}  ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-disconnected": "Disconnected 󰤭 ",
+        "format-alt": "{icon} {essid} {bandwidthUpBits}  | {bandwidthDownBits}  ",
+		"format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+		"interval": 1,
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
+        "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-muted": "",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -186,5 +178,16 @@
 			"suspend": "systemctl suspend",
 			"hibernate": "systemctl hibernate"
 		}
-    }
+    },
+	"cava": {
+		"cava_config": "$HOME/.config/cava/config",
+		"framerate": 60,
+		"autosens": 1,
+		"bars": 18,
+		"method": "pipewire",
+		"input_delay": 0,
+		"sleep_timer": 8,
+		"bar_delimiter": 0,
+		"format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ]
+	}
 }

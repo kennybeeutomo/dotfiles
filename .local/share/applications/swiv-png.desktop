@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/home/kenny/.scripts/viewImage.sh
+MimeType=image/png;
+Name=viewImage.sh
+NoDisplay=false
+Type=Application

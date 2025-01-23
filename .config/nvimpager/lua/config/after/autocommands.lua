@@ -1,0 +1,1 @@
+/home/kenny/.config/nvim/lua/config/after/autocommands.lua

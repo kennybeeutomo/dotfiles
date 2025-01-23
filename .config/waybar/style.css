@@ -1,1 +1,135 @@
-/home/kenny/.cache/wal/colors-waybar.css
+@import "wal.css";
+
+/*colors
+* normal
+* color0 - black
+* color1 - red
+* color2 - green
+* color3 - yellow
+* color4 - blue
+* color5 - magenta
+* color6 - cyan
+* color7 - white
+*
+* bright
+* color8  - black
+* color9  - red
+* color10 - green
+* color11 - yellow
+* color12 - blue
+* color13 - magenta
+* color14 - cyan
+* color15 - white
+*/
+
+* {
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 12px;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid @color14;
+    color: @foreground;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+	margin: 3px;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px @color14;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: @foreground;
+}
+
+#workspaces button.active {
+    padding: 0 5px;
+    background: @color12;
+    color: @background;
+}
+
+#workspaces button.urgent {
+    background-color: @color9;
+}
+
+#clock,
+#battery,
+#cpu,
+#cava,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd {
+	padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: @color0;
+	border-radius: 4px;
+    background-color: @color12;
+	margin: 3px;
+}
+
+#window,
+#workspaces {
+}
+
+/*.modules-left > widget:first-child > #workspaces {*/
+/*    margin-left: 0;*/
+/*}*/
+
+/*.modules-right > widget:last-child > #workspaces {*/
+/*    margin-right: 0;*/
+/*}*/
+
+@keyframes blink {
+    to {
+        background-color: @color9;
+    }
+}
+
+#battery.critical:not(.charging) {
+    animation-name: blink;
+    animation-duration: 0.1s;
+    animation-timing-function: steps(60);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network.disconnected {
+    background-color: @color9;
+}
+
+#wireplumber.muted {
+    background-color: @color9;
+}
+
+#temperature.critical {
+    background-color: @color9;
+}

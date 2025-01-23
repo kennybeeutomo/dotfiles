@@ -13,15 +13,11 @@
     "de",
     "wm",
     "wmtheme",
-    "theme",
-    "icons",
-    "font",
     "terminal",
     "cpu",
     "gpu",
     "memory",
     "disk",
-    "poweradapter",
     "break",
     "colors"
   ]

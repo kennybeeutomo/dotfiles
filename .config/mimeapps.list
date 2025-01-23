@@ -1,0 +1,11 @@
+[Added Associations]
+application/pdf=zathura.desktop;
+image/jpeg=swiv-jpeg.desktop;
+image/png=swiv-png.desktop;
+text/plain=Alacritty.desktop;nvim.desktop;
+
+[Default Applications]
+application/pdf=zathura.desktop;
+image/jpeg=swiv-jpeg.desktop;
+image/png=swiv-png.desktop;
+text/plain=nvim.desktop
