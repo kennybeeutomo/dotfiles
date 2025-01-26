@@ -17,7 +17,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME"/zsh/zcompcache
 setopt MENU_COMPLETE
 
-autoload -Uz compinit && compinit
+autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-$ZSH_VERSION
 
 autoload -Uz promptinit && promptinit
@@ -31,6 +31,8 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f ~/.scripts/functions ] && source ~/.scripts/functions
 
 PS1=" %~ %0(?.%F{blue}.%F{red})%f "
+
+setopt SH_WORD_SPLIT
 
 # yazi integration
 function y() {
