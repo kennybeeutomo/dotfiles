@@ -1,4 +1,5 @@
 alias grep='grep --color=auto'
+alias nvimpager='nvimpager -p'
 alias more='nvimpager'
 alias less='nvimpager'
 
@@ -29,18 +30,20 @@ alias info='info --vi-keys'
 
 alias fetch='fastfetch'
 
-alias trans="trans -pager nvimpager"
+t() {
+	trans $1 | nvimpager
+}
 
 alias snvim="sudo -E nvim"
 
-alias cfz='nvim .config/zsh/.zshrc'
-alias cfh='nvim .config/hypr'
-alias cfn='nvim .config/nvim'
-alias cfy='nvim .config/yazi'
-alias cfu='nvim .config/uwsm'
-alias cfa='nvim .scripts/aliases'
-alias cfw='nvim .config/waybar'
-alias cfr='nvim .config/rofi'
+alias cfz='nvim $HOME/.config/zsh/.zshrc'
+alias cfh='nvim $HOME/.config/hypr'
+alias cfn='nvim $HOME/.config/nvim'
+alias cfy='nvim $HOME/.config/yazi'
+alias cfu='nvim $HOME/.config/uwsm'
+alias cfa='nvim $HOME/.scripts/aliases'
+alias cfw='nvim $HOME/.config/waybar'
+alias cfr='nvim $HOME/.config/rofi'
 
 alias nmconnect='nmcli --ask device wifi connect'
 
