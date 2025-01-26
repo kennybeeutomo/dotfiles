@@ -1,16 +1,17 @@
 alias grep='grep --color=auto'
-alias more='less'
+alias more='nvimpager'
+alias less='nvimpager'
 
-alias ls='eza -hF --color=auto'
+alias ls='eza -hF --color=auto --icons=auto'
 alias lr='ls -R'
 alias ll='ls -l'
 alias la='ll -A'
 alias lx='ll -BX'
 alias lz='ll -rS'
-alias lt='ll -rt'
-alias lm='la | more'
+alias lt='ll --sort=modified'
+alias lm='la | nvimpager'
 
-alias tree='eza --tree'
+alias tree='ls --tree'
 
 alias fehbg='feh --bg-fill'
 alias rmenu='rofi -dmenu'
@@ -24,12 +25,22 @@ alias cd='z'
 alias cat='bat'
 
 alias man='man -P nvimpager'
+alias info='info --vi-keys'
 
 alias fetch='fastfetch'
 
 alias trans="trans -pager nvimpager"
 
 alias snvim="sudo -E nvim"
+
+alias cfz='nvim .config/zsh/.zshrc'
+alias cfh='nvim .config/hypr'
+alias cfn='nvim .config/nvim'
+alias cfy='nvim .config/yazi'
+alias cfu='nvim .config/uwsm'
+alias cfa='nvim .scripts/aliases'
+alias cfw='nvim .config/waybar'
+alias cfr='nvim .config/rofi'
 
 alias nmconnect='nmcli --ask device wifi connect'
 
