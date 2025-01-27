@@ -9,3 +9,8 @@ set font "JetBrainsMono Nerd Font"
 set recolor true
 
 set scroll-step 100
+
+map d scroll half-down
+map u scroll half-up
+map e scroll half-up
+map <C-d> toggle_page_mode
