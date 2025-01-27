@@ -24,7 +24,7 @@ zle -N zle-keymap-select
 zle -N zle-line-init
 
 bindkey -v # vim keys
-bindkey -M viins "^H" backward-delete-char
+bindkey -M viins "^H" backward-kill-word
 bindkey -M viins "^?" backward-delete-char
 bindkey -M viins "\e[3~" delete-char
 
