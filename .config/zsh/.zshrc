@@ -3,19 +3,34 @@ HISTFILE="$XDG_STATE_HOME"/zsh/history
 
 HISTSIZE=1000000
 SAVEHIST=1000000
-setopt hist_ignore_space
-setopt autocd nomatch
+KEYTIMEOUT=1
+
+setopt HIST_IGNORE_SPACE
+setopt AUTO_CD
+setopt SH_WORD_SPLIT
+setopt IGNORE_EOF
+setopt MENU_COMPLETE
 
 [[ -z $ZDOTDIR ]] && export ZDOTDIR="$HOME"
 
+function zle-line-init zle-keymap-select {
+	case $KEYMAP in
+		viins|main ) printf '\e[6 q' ;;
+		vicmd ) printf '\e[2 q' ;;
+	esac
+}
+
+zle -N zle-keymap-select
+zle -N zle-line-init
+
 bindkey -v # vim keys
-bindkey "^H" backward-delete-char
-bindkey "^?" backward-delete-char
+bindkey -M viins "^H" backward-delete-char
+bindkey -M viins "^?" backward-delete-char
+bindkey -M viins "\e[3~" delete-char
 
 zstyle :compinstall filename "$ZDOTDIR/.zshrc"
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME"/zsh/zcompcache
-setopt MENU_COMPLETE
 
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-$ZSH_VERSION
@@ -31,8 +46,6 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f ~/.scripts/functions ] && source ~/.scripts/functions
 
 PS1=" %~ %0(?.%F{blue}.%F{red})%f "
-
-setopt SH_WORD_SPLIT
 
 # yazi integration
 function y() {
