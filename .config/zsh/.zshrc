@@ -59,7 +59,7 @@ bindkey -M viins "^H"      backward-kill-word
 bindkey -M viins "^?"      backward-delete-char
 bindkey -M viins "\e[3~"   delete-char
 bindkey -M viins "^E"      execute-named-cmd
-bindkey -M viins "^J"      vi-menu-select
+bindkey -M viins "^K"      vi-menu-select
 
 # ---- [ ALIASES ] ----
 [ -f ~/.scripts/aliases ] && source ~/.scripts/aliases
