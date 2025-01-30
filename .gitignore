@@ -1,3 +1,5 @@
 .config/nvim/
 .config/nvim/*
 .config/wayvnc
+.config/hypr/hyprland-hidden.conf
+.config/bashtop/error.log

@@ -15,6 +15,7 @@ esac
 dirs=$(ls ~/Pictures)
 
 extraDirs=(
+	"$2"
 )
 
 # TODO: exclude directories
