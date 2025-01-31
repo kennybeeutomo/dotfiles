@@ -74,15 +74,6 @@ function zle-line-init zle-keymap-select {
 zle -N zle-keymap-select
 zle -N zle-line-init
 
-# menu selection with vi keys
-function vi-menu-select {
-	zle vi-cmd-mode
-	zle menu-select
-	zle vi-add-next
-}
-
-zle -N vi-menu-select
-
 # ---- [ KEY MAPPINGS ] ----
 
 bindkey -v # vim keys
@@ -90,7 +81,11 @@ bindkey -M viins "^H"      backward-kill-word
 bindkey -M viins "^?"      backward-delete-char
 bindkey -M viins "\e[3~"   delete-char
 bindkey -M viins "^E"      execute-named-cmd
-bindkey -M viins "^K"      vi-menu-select
+bindkey -M viins "^K"      menu-select
+bindkey -M menuselect "^H" vi-backward-char
+bindkey -M menuselect "^J" down-line-or-history
+bindkey -M menuselect "^K" up-line-or-history
+bindkey -M menuselect "^L" vi-forward-char
 
 # ---- [ ALIASES ] ----
 [ -f ~/.scripts/aliases ] && source ~/.scripts/aliases
