@@ -1,5 +1,5 @@
 # ---- [ OPTIONS AND VARIABLES ] ----
-[[ -z $ZDOTDIR ]] && export ZDOTDIR="$HOME"
+[ -z $ZDOTDIR ] && export ZDOTDIR="$HOME"
 HISTFILE="$XDG_STATE_HOME"/zsh/history
 [ -d "$XDG_CACHE_HOME"/zsh ] || mkdir -p "$XDG_CACHE_HOME"/zsh
 
@@ -11,7 +11,6 @@ setopt HIST_IGNORE_SPACE
 setopt AUTO_CD
 setopt SH_WORD_SPLIT
 setopt IGNORE_EOF
-setopt MENU_COMPLETE
 
 fpath+=$ZDOTDIR/.zsh_functions
 
@@ -26,9 +25,41 @@ autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-$ZSH_VERSION
 
 # ---- [ PROMPT ] ----
-autoload -Uz promptinit && promptinit
+local prompt_fmt="%~ %0(?.%F{blue}.%F{red})%f "
+PS1=" $prompt_fmt"
 
-PS1=" %~ %0(?.%F{blue}.%F{red})%f "
+# Gets execution time
+# Retrieved and modified from https://gist.github.com/knadh/123bca5cfdae8645db750bfb49cb44b0
+function preexec() {
+	start_time=$(date +%s%3N)
+}
+
+function precmd() {
+	if [ $start_time ]; then
+		local end_time=$(date +%s%3N)
+		local elapsed=$(( $end_time - $start_time ))
+
+		local second=1000
+		local minute=60000
+		local hour=3600000
+
+		local elapsed_h=$(( $elapsed / $hour ))
+
+		local elapsed_m=$(( $elapsed % $hour / $minute ))
+		local elapsed_s=$(( $elapsed % $minute / $second ))
+		local elapsed_ms=$(( $elapsed % $second ))
+
+		PS1="%F{cyan} "
+
+		[ $elapsed_h -ne 0 ] && PS1+="${elapsed_h}h "
+		[ $elapsed_m -ne 0 ] && PS1+="${elapsed_m}m "
+		[ $elapsed_s -ne 0 ] && PS1+="${elapsed_s}s "
+		PS1+="${elapsed_ms}ms%f "
+		PS1+="$prompt_fmt"
+	fi
+
+	unset start_time
+}
 
 # ---- [ ZLE WIDGETS ] ----
 
@@ -89,4 +120,4 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # ---- [ STARTUP COMMANDS ] ----
 
 # don't pfetch in nvim
-[[ $TERM = 'xterm-256color' ]] || pfetch
+[ "$TERM" = 'xterm-256color' ] || pfetch
