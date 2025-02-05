@@ -31,7 +31,7 @@ alias info='info --vi-keys'
 alias fetch='fastfetch'
 
 t() {
-	trans $@ | nvimpager
+	trans "$@" | nvimpager
 }
 
 alias snvim="sudo -E nvim"
