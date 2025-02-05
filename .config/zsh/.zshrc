@@ -11,6 +11,7 @@ setopt HIST_IGNORE_SPACE
 setopt AUTO_CD
 setopt SH_WORD_SPLIT
 setopt IGNORE_EOF
+setopt INTERACTIVE_COMMENTS
 
 fpath+=$ZDOTDIR/.zsh_functions
 
@@ -20,6 +21,7 @@ zmodload zsh/complist
 zstyle :compinstall filename "$ZDOTDIR/.zshrc"
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case-insensitive completion
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME"/zsh/zcompcache
+zstyle ':completion:*' menu select
 
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-$ZSH_VERSION
@@ -54,7 +56,7 @@ function precmd() {
 		[ $elapsed_h -ne 0 ] && PS1+="${elapsed_h}h "
 		[ $elapsed_m -ne 0 ] && PS1+="${elapsed_m}m "
 		[ $elapsed_s -ne 0 ] && PS1+="${elapsed_s}s "
-		PS1+="${elapsed_ms}ms%f "
+		[[ $elapsed_m -eq 0 && $elapsed_h -eq 0 ]] && PS1+="${elapsed_ms}ms%f "
 		PS1+="$prompt_fmt"
 	fi
 
@@ -114,5 +116,5 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # ---- [ STARTUP COMMANDS ] ----
 
-# don't pfetch in nvim
+# pfetch every startup except in nvim terminal
 [ "$TERM" = 'xterm-256color' ] || pfetch
