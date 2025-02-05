@@ -9,9 +9,9 @@
 	// MODULES
     "modules-left": [
         "hyprland/workspaces",
-		"tray",
     ],
     "modules-center": [
+		"tray",
         "network",
     ],
     "modules-right": [
@@ -127,12 +127,12 @@
 		"format-muted": "󰝟"
 	},
     "network": {
-        "format-wifi": "{icon} {essid} {bandwidthUpBytes}  | {bandwidthDownBytes}  ",
+        "format-wifi": "{essid} {bandwidthUpBytes}  | {bandwidthDownBytes}  ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected 󰤭 ",
-        "format-alt": "{icon} {essid} {bandwidthUpBits}  | {bandwidthDownBits}  ",
+        "format-alt": "{essid} {bandwidthUpBits}  | {bandwidthDownBits}  ",
 		"format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
 		"interval": 1,
     },
