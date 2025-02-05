@@ -2,9 +2,17 @@ NAME = {PROGRAM_NAME}
 EXE = $(NAME)
 TARGET = ./$(EXE)
 
+DEBUG = on
+
 CC = gcc
 CFLAGS = -Wall -std=c17
 LDLIBS = 
+
+ifeq ($(DEBUG),on)
+	CFLAGS += -g -O0
+else
+	CFLAGS += -O2
+endif
 
 CFILES = $(wildcard *.c)
 OBJECTS = $(CFILES:.c=.o)
