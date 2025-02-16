@@ -7,4 +7,13 @@ rofiConfig="$HOME/.config/rofi/config-vi.rasi"
 
 optionsDir=~/.scripts/options
 
-echo 0.{0..9} 1.0 | rofi -dmenu -i -p 'Pywal Saturation' -sep ' ' > $optionsDir/walsaturation && pywal $(cat ~/.cache/wal/wal)
+currentSaturation=$(cat "$optionsDir/walsaturation")
+
+saturations=$(for s in 0.{0..9} 1.0; do
+                  echo -n $s
+			      [ "$s" = "$currentSaturation" ] && echo -n ' *'
+			      echo
+			  done)
+
+newSaturation=$(echo "$saturations" | rofi -dmenu -i -p 'Pywal Saturation')
+[ -n "$newSaturation" ] && echo "$newSaturation" > $optionsDir/walsaturation && pywal "$(cat ~/.cache/wal/wal)"
