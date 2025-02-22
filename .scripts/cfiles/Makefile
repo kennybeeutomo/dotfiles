@@ -5,11 +5,11 @@ TARGET = ./$(EXE)
 DEBUG = on
 
 CC = gcc
-CFLAGS = -Wall -std=c17
+CFLAGS = -Wall -std=c11
 LDLIBS = 
 
 ifeq ($(DEBUG),on)
-	CFLAGS += -g -O0
+	CFLAGS += -g3 -O0
 else
 	CFLAGS += -O2
 endif
@@ -27,12 +27,12 @@ all: $(OBJECTS)
 
 %.o: %.c %.h
 	@echo "[   ] Compiling $^"
-	@$(CC) -c $<
+	@$(CC) $(CFLAGS) -c $<
 	@echo -e "$(UP)[ $(CHECK) ] Compiling $^"
 
 %.o: %.c
 	@echo "[   ] Compiling $^"
-	@$(CC) -c $<
+	@$(CC) $(CFLAGS) -c $<
 	@echo -e "$(UP)[ $(CHECK) ] Compiling $^"
 
 clean:
@@ -44,7 +44,10 @@ run:
 	@$(TARGET)
 
 test:
-	echo 1 | $(EXE)
+	@echo 1 | $(TARGET)
+
+debug:
+	@gdb -q $(EXE)
 
 .PHONY:
-	clean run test
+	clean run test debug

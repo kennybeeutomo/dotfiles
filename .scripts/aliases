@@ -44,9 +44,14 @@ alias cfu='nvim $HOME/.config/uwsm'
 alias cfa='nvim $HOME/.scripts/aliases'
 alias cfw='nvim $HOME/.config/waybar'
 alias cfr='nvim $HOME/.config/rofi'
+alias cfs='nvim $HOME/.scripts'
+
+alias todo='nvim -c "Neorg workspace todo"'
 
 alias nmconnect='nmcli --ask device wifi connect'
 
 alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
 
 alias wayvnc='wayvnc -d -v -g -p'
+
+alias gdb='gdb -q'
