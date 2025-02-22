@@ -15,7 +15,6 @@ wwal() {
 pywal() {
 	wwal "$1" || return 1
 	wbctl.sh reload
-	pywalfox update
 	killall -SIGUSR1 nvim -q
 }
 
