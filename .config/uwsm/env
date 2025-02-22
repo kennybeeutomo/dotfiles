@@ -35,4 +35,6 @@ export GOPATH="$XDG_DATA_HOME"/go
 
 export XDG_STATE_HOME="$HOME/.local/state"
 
+export PYTHON_BASIC_REPL=1
+
 export PATH="${PATH}:$HOME/.scripts"

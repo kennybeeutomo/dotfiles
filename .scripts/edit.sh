@@ -19,6 +19,7 @@ configFiles=(
 	'zsh'
 	'scripts'
 	'todo'
+	'notes'
 	'desktop entries'
 	'mimeapps'
 )
@@ -63,6 +64,10 @@ case $configFile in
 	'todo' )
 		cmd+=' -c '
 		args="\"Neorg workspace todo\""
+		;;
+	'notes' )
+		cmd+=' -c '
+		args="\"Neorg workspace notes\""
 		;;
 	'desktop entries' )
 		args=" $HOME/.local/share/applications"

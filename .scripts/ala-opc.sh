@@ -6,7 +6,7 @@ configFile="$configDir/alacritty.toml"
 opacityFile="$configDir/alacritty-opacity.toml"
 newOpacity=$(cat "$opacityFile" | tomlq '.window.opacity')
 
-default=0.8
+default=0.9
 step=${2:-0.1}
 
 case $1 in

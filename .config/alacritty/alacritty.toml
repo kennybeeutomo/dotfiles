@@ -22,3 +22,6 @@ bindings = [
 
 [mouse]
 hide_when_typing = true
+
+[window]
+dynamic_padding = true
