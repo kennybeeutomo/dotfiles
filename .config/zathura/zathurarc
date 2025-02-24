@@ -10,6 +10,8 @@ set recolor true
 
 set scroll-step 100
 
+set guioptions ''
+
 map d scroll half-down
 map u scroll half-up
 map e scroll half-up

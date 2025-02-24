@@ -10,6 +10,7 @@ alias la='ll -A'
 alias lx='ll -BX'
 alias lz='ll -rS'
 alias lt='ll --sort=modified'
+alias lss='ll --sort=size'
 alias lm='la | nvimpager'
 
 alias tree='ls --tree'
