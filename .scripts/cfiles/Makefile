@@ -22,7 +22,7 @@ CHECK = \e[92m✓\e[0m
 
 all: $(OBJECTS)
 	@echo "[   ] Linking $^"
-	@$(CC) $(CFLAGS) $^ -o $(TARGET)
+	@$(CC) $(CFLAGS) $^ -o $(TARGET) $(LDLIBS)
 	@echo -e "$(UP)[ $(CHECK) ] Linking $^"
 
 %.o: %.c %.h

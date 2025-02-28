@@ -6,9 +6,9 @@ CompileFlags:
   Compiler: gcc
   Add: [-xc, -std=c11, -Wall, -Wextra]
 
-Diagnostics:
+# Diagnostics:
   # UnusedIncludes: None
-  #Suppress: -Wunused
+  # Suppress: -Wunused
 ...
 
 # ------------ [ C++ ] ------------
@@ -19,7 +19,7 @@ CompileFlags:
   Compiler: g++
   Add: [-xc++, -std=c++11, -Wall, -Wextra]
 
-Diagnostics:
+# Diagnostics:
   # UnusedIncludes: None
-  #Suppress: -Wunused
+  # Suppress: -Wunused
 ...
