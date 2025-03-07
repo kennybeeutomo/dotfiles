@@ -7,6 +7,8 @@ set highlight-color rgba(150,200,255,0.5)
 set font "JetBrainsMono Nerd Font"
 
 set recolor true
+set recolor-keephue true
+set recolor-reverse-video true
 
 set scroll-step 100
 
