@@ -7,6 +7,8 @@ local set = vim.keymap.set
 -- General
 set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Quit All" })
 set("n", "<leader>qw", "<cmd>wqa!<cr>", { desc = "Save and quit All" })
+set("n", "<C-q>", "<cmd>q<cr>", { desc = "Quit" })
+set("n", "<C-p>", "<cmd>q<cr>", { desc = "Quit" })
 
 -- Navigation
 set({"n", "v"}, "j", "gj")
@@ -17,9 +19,6 @@ set({"n", "v"}, "<C-l>", "zL")
 set({"n", "v"}, "<C-h>", "zH")
 
 -- Options
-set("n", "<leader>trn", function()
-	vim.o.relativenumber = not vim.o.relativenumber
-end, { desc = "Toggle Relative Number" })
 set("n", "<leader>tw", function()
 	vim.o.wrap = not vim.o.wrap
 end, { desc = "Toggle Wrapping" })
@@ -29,6 +28,7 @@ set("n", "<leader>a", "ggVG", { desc = "Select all" })
 
 -- Search
 set("n", "<esc>", "<cmd>noh<cr>")
+set("n", "?", "q/")
 
 -- WhichKey
 set("n", "g?", "<cmd>WhichKey<cr>")

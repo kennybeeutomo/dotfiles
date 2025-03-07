@@ -12,10 +12,12 @@ vim.opt.fillchars = { eob = ' ' }
 
 vim.opt.showmode = false
 
+vim.o.shortmess = vim.o.shortmess .. "I"
+
 vim.opt.cmdheight = 0
 
--- Set oldfiles limit to 1000
-vim.opt.shada = string.gsub(vim.o.shada, "'%d+", "'1000", 1)
+-- Set oldfiles limit to 10000
+vim.opt.shada = string.gsub(vim.o.shada, "'%d+", "'10000", 1)
 
 vim.wo.foldlevel = 20
 vim.wo.foldmethod = 'expr'
@@ -25,5 +27,16 @@ vim.opt.termguicolors = true
 
 -- Filetype detection
 vim.filetype.add({
-	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+	filename = {
+		["colors-hypr.conf"] = "hyprlang",
+		["aliases"] = "bash",
+		["functions"] = "bash",
+	},
+	pattern = {
+		[".*/hypr/.*%.conf"] = "hyprlang",
+		[".*/cava/config"] = "dosini",
+		[".*%.rasi"] = "rasi",
+		[".*%.h"] = "c",
+		[".*/uwsm/env.*"] = "sh",
+	},
 })
