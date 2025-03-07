@@ -2,6 +2,7 @@
 import = [
 	"~/.cache/wal/colors-alacritty.toml",
 	"~/.config/alacritty/alacritty-opacity.toml",
+	# "~/.config/alacritty/alacritty-themes/themes/night_owl.toml",
 ]
 
 [font]
