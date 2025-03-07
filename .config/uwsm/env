@@ -38,3 +38,4 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export PYTHON_BASIC_REPL=1
 
 export PATH="${PATH}:$HOME/.scripts"
+export PATH="${PATH}:$GOPATH/bin"
