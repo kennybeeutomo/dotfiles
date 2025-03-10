@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 # script to display clock
 
+tput civis # hide cursor
+tput smcup # save screen
+
 font='colossal'
 figlet_height=8
 
-echo -ne '\e[?47h'
-
-while [ -z "$input" ]; do
-	echo -ne '\033c' # clear
-	echo -ne '\e[?25l' # hide cursor
+draw() {
 	echo -e '\e[94m' # set color to bright blue
 
 	rows=$(tput lines)
@@ -24,12 +23,17 @@ while [ -z "$input" ]; do
 
 	tput cup $Time_pos
 
-	figlet -p -t -c -f "$font" "$Time" # | sed 's/#/█/g'
+	figlet -p -t -c -f "$font" " $Time " # | sed 's/#/█/g'
 
 	[ "$1" == 'nodate' ] || printf "%${Date_pos}s" "$Date"
+}
 
+trap "tput clear && draw" SIGWINCH # refresh when resized
+
+while [ -z "$input" ]; do
+	draw
 	read -rs -n 1 -t 1 input
 done
 
-echo -ne '\033c' # clear
-echo -ne '\e[?25h' # unhide cursor
+tput rmcup # restore screen
+tput cnorm # unhide cursor
