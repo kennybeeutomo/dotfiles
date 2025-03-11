@@ -7,6 +7,13 @@ tput smcup # save screen
 font='colossal'
 figlet_height=8
 
+arg=$1
+
+reinit() {
+	tput reset
+	tput civis
+}
+
 draw() {
 	echo -e '\e[94m' # set color to bright blue
 
@@ -23,16 +30,21 @@ draw() {
 
 	tput cup $Time_pos
 
-	figlet -p -t -c -f "$font" " $Time " # | sed 's/#/█/g'
+	figlet -p -t -c -f "$font" " $Time " | grep '\S' # | sed 's/#/█/g'
 
-	[ "$1" == 'nodate' ] || printf "%${Date_pos}s" "$Date"
+	[ "$arg" == 'nodate' ] || printf "\n\n%${Date_pos}s" "$Date"
 }
 
 trap "tput clear && draw" SIGWINCH # refresh when resized
 
-while [ -z "$input" ]; do
+while [ -z "$stop" ]; do
 	draw
 	read -rs -n 1 -t 1 input
+	case $input in
+		"" ) ;;
+		"l" ) reinit ;;
+		* ) stop=yes ;;
+	esac
 done
 
 tput rmcup # restore screen
