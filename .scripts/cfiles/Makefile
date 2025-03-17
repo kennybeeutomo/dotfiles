@@ -49,5 +49,8 @@ test:
 debug:
 	@gdb -q $(EXE)
 
+watch:
+	@fd '\.c|\.c|Makefile' | entr -cs 'make && make run'
+
 .PHONY:
-	clean run test debug
+	clean run test debug watch
