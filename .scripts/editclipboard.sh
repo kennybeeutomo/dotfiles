@@ -6,4 +6,4 @@ tempDir='/tmp/clipboard'
 file=$(mktemp --tmpdir=$tempDir)
 wl-paste -n > "$file"
 alacritty --class editClipboard -e ${EDITOR:nvim} "$file"
-cat "$file" | wl-copy
+cat "$file" | wl-copy -n
