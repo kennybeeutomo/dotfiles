@@ -1,5 +1,5 @@
 swww-img() {
-	swww img -t grow --transition-pos top-right --transition-step 1 --transition-fps 144 --transition-duration 0.25 "$1"
+	swww img -t grow --transition-pos top-right --transition-step 13 --transition-fps 144 --transition-duration 0.5 "$1"
 }
 
 pickimg() {
