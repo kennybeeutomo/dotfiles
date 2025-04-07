@@ -50,7 +50,7 @@ debug:
 	@gdb -q $(EXE)
 
 watch:
-	@fd '\.c|\.c|Makefile' | entr -cs 'make && make run'
+	@fd '\.c|\.h|Makefile' | entr -cs 'make -s && make -s run'
 
 .PHONY:
 	clean run test debug watch
