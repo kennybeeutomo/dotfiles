@@ -1,13 +1,18 @@
 # https://github.com/sxyazi/yazi/tree/shipped/yazi-config/preset
+"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+
 [manager]
+
 show_hidden = true
 sort_by = "natural"
 sort_reverse = false
 
 [opener]
+
 edit = [
 	{ run = 'nvim "$@"', block = true, for = "unix" }
 ]
+
 open = [
 	{ run = 'xdg-open "$@"', orphan = true, desc = "Open" }
 ]

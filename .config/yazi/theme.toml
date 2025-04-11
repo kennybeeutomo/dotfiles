@@ -1,5 +1,8 @@
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+
 [icon]
-prepend_files = [
+
+files = [
 	{ name = ".babelrc", text = "", fg = "lightyellow" },
 	{ name = ".bash_profile", text = "", fg = "lightblue" },
 	{ name = ".bashrc", text = "", fg = "lightblue" },
@@ -166,7 +169,8 @@ prepend_files = [
 	{ name = "xorg.conf", text = "", fg = "lightred" },
 	{ name = "xsettingsd.conf", text = "", fg = "lightred" },
 ]
-prepend_exts = [
+
+exts = [
 	{ name = "3gp", text = "", fg = "lightyellow" },
 	{ name = "3mf", text = "󰆧", fg = "lightblue" },
 	{ name = "7z", text = "", fg = "lightyellow" },
