@@ -1,6 +1,7 @@
 Background = {background}
 Foreground = {foreground}
 Cursor     = {cursor}
+Alpha      = {alpha}
 
 Color 0  (Black)          = {color0}
 Color 1  (Red)            = {color1}

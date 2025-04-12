@@ -1,8 +1,7 @@
+include "../../../.cache/wal/colors-zathura"
+
 set selection-clipboard clipboard
 set selection-notification false
-
-set highlight-active-color rgba(120,140,255,0.5)
-set highlight-color rgba(150,200,255,0.5)
 
 set font "JetBrainsMono Nerd Font"
 
