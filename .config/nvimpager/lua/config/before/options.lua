@@ -1,5 +1,3 @@
-local utils = require("utils")
-
 -- OPTIONS
 vim.opt.ignorecase = true
 
@@ -14,7 +12,7 @@ vim.opt.showmode = false
 
 vim.o.shortmess = vim.o.shortmess .. "I"
 
-vim.opt.cmdheight = 0
+vim.opt.laststatus = 0
 
 -- Set oldfiles limit to 10000
 vim.opt.shada = string.gsub(vim.o.shada, "'%d+", "'10000", 1)

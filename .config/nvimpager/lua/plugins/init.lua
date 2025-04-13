@@ -10,7 +10,6 @@ end
 -- in order
 load({
 	"treesitter",
-	"lualine",
 	"colorizer",
 	"nvim-cmp",
 })
