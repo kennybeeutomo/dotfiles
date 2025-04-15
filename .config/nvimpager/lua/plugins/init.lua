@@ -12,4 +12,5 @@ load({
 	"treesitter",
 	"colorizer",
 	"nvim-cmp",
+	"zenmode",
 })

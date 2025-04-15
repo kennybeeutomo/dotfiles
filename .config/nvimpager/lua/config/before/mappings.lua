@@ -18,6 +18,7 @@ set({"n", "v"}, "j", "gjzz")
 set({"n", "v"}, "k", "gkzz")
 set({"n", "v"}, "d", "<C-d>zz")
 set({"n", "v"}, "u", "<C-u>zz")
+set({"n", "v"}, "e", "<C-u>zz")
 set({"n", "v"}, "<C-l>", "zL")
 set({"n", "v"}, "<C-h>", "zH")
 

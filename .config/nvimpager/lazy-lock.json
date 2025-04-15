@@ -11,5 +11,6 @@
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
   "pywal16.nvim": { "branch": "main", "commit": "446ae689c8e4569b9537cddadb28d6e939658ea5" },
   "tiny-devicons-auto-colors.nvim": { "branch": "main", "commit": "51f548421f8a74680eff27d283c9d5ea6e8d0074" },
-  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
+  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
+  "zen-mode.nvim": { "branch": "main", "commit": "863f150ca321b3dd8aa1a2b69b5f411a220e144f" }
 }
