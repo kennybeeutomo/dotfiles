@@ -16,6 +16,7 @@ alias lm='la | nvimpager'
 alias tree='ls --tree'
 
 alias fehbg='feh --bg-fill'
+alias rofi='rofi -x11'
 alias rmenu='rofi -dmenu'
 
 alias gengrubcfg='sudo grub-mkconfig -o /boot/grub/grub.cfg'
@@ -48,6 +49,7 @@ alias cfr='nvim $HOME/.config/rofi'
 alias cfs='nvim $HOME/.scripts'
 
 alias todo='nvim -c "Neorg workspace todo"'
+alias notes='nvim -c "Neorg workspace notes"'
 
 alias nmconnect='nmcli --ask device wifi connect'
 

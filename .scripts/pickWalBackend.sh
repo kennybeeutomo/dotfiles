@@ -14,7 +14,7 @@ for b in {0..4}; do
 done
 
 IFS=';'
-choice=$(echo -e "${backends[*]}" | rofi -config $rofiConfig -dmenu -sep ';' -i -p "Pywal Backends")
+choice=$(echo -e "${backends[*]}" | rofi -x11 -config $rofiConfig -dmenu -sep ';' -i -p "Pywal Backends")
 
 case $choice in
 	wal )

@@ -24,7 +24,7 @@ configFiles=(
 	'mimeapps'
 )
 
-configFile=$(IFS=';'; echo "${configFiles[*]}" | rofi -dmenu -sep ';' -p 'Edit')
+configFile=$(IFS=';'; echo "${configFiles[*]}" | rofi -x11 -dmenu -sep ';' -p 'Edit')
 
 case $configFile in
 	'uwsm' )

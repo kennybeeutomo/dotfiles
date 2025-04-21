@@ -30,7 +30,7 @@ for dir in $extraDirs; do
 	dirs+="\n$dir"
 done
 
-chosenDir=$(echo -e "${dirs[@]}" | rofi -config $rofiConfig -dmenu -i -p "$prompt")
+chosenDir=$(echo -e "${dirs[@]}" | rofi -x11 -config $rofiConfig -dmenu -i -p "$prompt")
 [ -z "$chosenDir" ] && echo 'No directory chosen' && exit 1
 wallpaperDir=$(fd -a "$chosenDir" "$HOME/Pictures")
 

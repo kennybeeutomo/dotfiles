@@ -15,5 +15,5 @@ saturations=$(for s in 0.{0..9} 1.0; do
 			      echo
 			  done)
 
-newSaturation=$(echo "$saturations" | rofi -dmenu -i -p 'Pywal Saturation')
+newSaturation=$(echo "$saturations" | rofi -x11 -dmenu -i -p 'Pywal Saturation')
 [ -n "$newSaturation" ] && echo "$newSaturation" > $optionsDir/walsaturation && pywal "$(cat ~/.cache/wal/wal)"
