@@ -118,3 +118,5 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # pfetch every startup except in nvim terminal
 [ "$TERM" = 'xterm-256color' ] || pfetch
+
+eval $(dircolors)
