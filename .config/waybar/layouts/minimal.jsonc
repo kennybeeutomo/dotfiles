@@ -1,0 +1,18 @@
+{
+	"modules-left": [
+		"hyprland/workspaces"
+	],
+	"modules-center": [
+		"clock"
+	],
+	"modules-right": [
+		"tray",
+		"wireplumber",
+		"battery"
+	],
+
+	"include": [
+		"$HOME/.config/waybar/modules.jsonc",
+		"$HOME/.config/waybar/config.jsonc"
+	]
+}

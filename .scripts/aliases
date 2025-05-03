@@ -1,3 +1,5 @@
+# Not suited for non-interactive shells
+
 alias grep='grep --color=auto'
 alias nvimpager='nvimpager -p'
 alias more='nvimpager'
@@ -17,7 +19,6 @@ alias tree='ls --tree'
 
 alias fehbg='feh --bg-fill'
 alias rofi='rofi -x11'
-alias rmenu='rofi -dmenu'
 
 alias gengrubcfg='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 
@@ -61,3 +62,7 @@ alias gdb='gdb -q'
 alias pipes='pipes.sh -K -R -s 15 -p 4 -c 1 -c 2 -c 3 -c 4 -c 5 -c 6 -c 7'
 
 alias lgit='lazygit'
+
+touchx() {
+	touch "$@" && chmod +x "$@"
+}

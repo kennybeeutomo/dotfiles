@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Rofi script to edit config files
 
+source ~/.scripts/utils
+
 EDITOR=${EDITOR:-nvim}
 
 cmd="$EDITOR"
@@ -24,7 +26,7 @@ configFiles=(
 	'mimeapps'
 )
 
-configFile=$(IFS=';'; echo "${configFiles[*]}" | rofi -x11 -dmenu -sep ';' -p 'Edit')
+configFile=$(IFS=';'; echo "${configFiles[*]}" | rmenu -sep ';' -p 'Edit')
 
 case $configFile in
 	'uwsm' )

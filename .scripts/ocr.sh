@@ -2,12 +2,9 @@
 # Script taken and modified a bit from https://gist.github.com/CapMousse/454ec041880e78b4e3a894e7a4033faa
 # Dependencies: tesseract-ocr imagemagick wl-clipboard
 
-screenshot="$HOME/.scripts/screenshot.sh"
+source ~/.scripts/utils
 
-die() {
-	hyprctl -q notify 3 3000 0 "$1"
-	exit 1
-}
+screenshot="$HOME/.scripts/screenshot.sh"
 
 cleanup() {
 	[[ -n $1 ]] && rm -r "$1"
@@ -22,5 +19,4 @@ trap "cleanup '$SCR_IMG'" EXIT
 mogrify -modulate 100,0 -resize 400% "$SCR_IMG/scr.png"
 tesseract "$SCR_IMG/scr.png" "$SCR_IMG/scr" -l chi_sim+jpn+eng # &> /dev/null
 wl-copy < "$SCR_IMG/scr.txt"
-hyprctl -q notify 5 3000 0 "Text extracted from image"
-exit
+success "Text extracted from image"

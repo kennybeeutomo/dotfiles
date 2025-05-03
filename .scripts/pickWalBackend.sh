@@ -1,35 +1,11 @@
 #!/usr/bin/env bash
 # Pywal Integration script to choose pywal backend with rofi
 
-source ~/.scripts/functions
+source ~/.scripts/utils
 
-rofiConfig="$HOME/.config/rofi/config-vi.rasi"
+backend=$(getoption walbackend)
+backends='wal colorz colorthief haishoku'
 
-optionsDir=~/.scripts/options
-backend=$(cat $optionsDir/walbackend)
-backends=(wal colorz colorthief haishoku)
+choice=$(echo "$backends" | vmenu -select $backend -sep ' ' -p "Pywal Backends")
 
-for b in {0..4}; do
-	[ ${backends[$b]} = $backend ] && backends[$b]+=' *'
-done
-
-IFS=';'
-choice=$(echo -e "${backends[*]}" | rofi -x11 -config $rofiConfig -dmenu -sep ';' -i -p "Pywal Backends")
-
-case $choice in
-	wal )
-		echo 'wal' > "$optionsDir/walbackend"
-		;;
-	colorz )
-		echo 'colorz' > "$optionsDir/walbackend"
-		;;
-	colorthief )
-		echo 'colorthief' > "$optionsDir/walbackend"
-		;;
-	haishoku )
-		echo 'haishoku' > "$optionsDir/walbackend"
-		;;
-	* ) exit 1;;
-esac
-
-pywal $(cat ~/.cache/wal/wal)
+[ -n "$choice" ] && setoption walbackend "$choice" && pywal auto

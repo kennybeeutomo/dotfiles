@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # Rofi script to search books
 
+source ~/.scripts/utils
+
 booksDir="$HOME/books"
-rofi="rofi -x11 -i -dmenu -p Books"
+rofi="rmenu -p Books"
 
 dir=$(ls $booksDir | $rofi)
 [ -z "$dir" ] && exit 1

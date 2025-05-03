@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 # Rofi script for code experiments
 
+source ~/.scripts/utils
+
 EDITOR=${EDITOR:-nvim}
 
 cmd="$EDITOR"
 terminal=alacritty
 experimentsDir="$HOME/code/experimentation"
 
-language=$(ls $experimentsDir | rofi -x11 -dmenu -p 'Experiment')
+language=$(ls $experimentsDir | rmenu -p 'Experiment')
 [ -z "$language" ] && exit 1
 
 # go to chosen dir

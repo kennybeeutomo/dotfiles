@@ -91,7 +91,7 @@ bindkey -M menuselect "^L" vi-forward-char
 
 # ---- [ ALIASES ] ----
 [ -f ~/.scripts/aliases ] && source ~/.scripts/aliases
-[ -f ~/.scripts/functions ] && source ~/.scripts/functions
+[ -f ~/.scripts/utils ] && source ~/.scripts/utils
 
 # ---- [ PLUGINS AND INTEGRATIONS ] ----
 

@@ -1,0 +1,57 @@
+# Short utility functions that don't deserve their own script files
+
+optionsDir="$XDG_DATA_HOME/dotfiles"
+
+getoption() {
+	cat "$optionsDir/$1"
+}
+
+setoption() {
+	echo $2 > "$optionsDir/$1"
+}
+
+pickimg() {
+	swiv -t -o -b -N pickimg "$1"
+}
+
+swww-img() {
+	swww img -t grow --transition-pos top-right --transition-step 13 --transition-fps 144 --transition-duration 0.5 "$1"
+}
+
+wwal() {
+	local backend=$(getoption walbackend)
+	local saturation=$(getoption walsaturation)
+	local wallpaper="$1"
+	[ "$wallpaper" = auto ] && wallpaper="$(cat ~/.cache/wal/wal)"
+	wal --cols16 lighten --backend "$backend" --saturate "$saturation" -n -s -i "$wallpaper"
+}
+
+pywal() {
+	wwal "$1" || return 1
+	wbctl.sh reload
+	killall -SIGUSR1 nvim -q
+}
+
+chwal() {
+	pywal "$1"
+	swww-img "$1"
+}
+
+rmenu() {
+	rofi -x11 -dmenu -i -no-custom "$@"
+}
+
+vmenu() {
+	local rofiConfig="$HOME/.config/rofi/config-vi.rasi"
+	rmenu -config $rofiConfig "$@"
+}
+
+die() {
+	hyprctl -q notify 3 3000 0 "$1"
+	exit 1
+}
+
+success() {
+	hyprctl -q notify 5 3000 0 "$1"
+	exit 0
+}

@@ -1,0 +1,23 @@
+{
+	"modules-left": [
+		"hyprland/workspaces"
+	],
+	"modules-center": [
+		"tray",
+		"network"
+	],
+	"modules-right": [
+		"mpd",
+		"cava",
+		"wireplumber",
+		"cpu",
+		"temperature",
+		"battery",
+		"clock"
+	],
+
+	"include": [
+		"$HOME/.config/waybar/modules.jsonc",
+		"$HOME/.config/waybar/config.jsonc"
+	]
+}

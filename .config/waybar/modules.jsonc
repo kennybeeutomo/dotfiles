@@ -1,0 +1,107 @@
+{
+	"hyprland/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"warp-on-scroll": false
+	},
+
+	"mpd": {
+		"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+		"format-disconnected": "Disconnected 󰝛",
+		"format-stopped": "󰝛",
+		"unknown-tag": "?",
+		"interval": 1,
+		"consume-icons": {
+			"on": " "
+		},
+		"random-icons": {
+			"on": " "
+		},
+		"repeat-icons": {
+			"on": " "
+		},
+		"single-icons": {
+			"on": "1 "
+		},
+		"state-icons": {
+			"paused": "",
+			"playing": ""
+		},
+		"tooltip-format": "MPD (connected)",
+		"tooltip-format-disconnected": "MPD (disconnected)"
+	},
+
+	"tray": {
+		// "icon-size": 21,
+		"spacing": 10
+	},
+
+	"clock": {
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"format-alt": "{:%Y-%m-%d}"
+	},
+
+	"cpu": {
+		"format": "{usage}% ",
+		"interval": 1
+	},
+
+	"memory": {
+		"format": "{}%  ",
+		"interval": 1
+	},
+
+	"temperature": {
+		// "thermal-zone": 2,
+		// "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+		"interval": 1,
+		"critical-threshold": 80,
+		"format": "{temperatureC}°C {icon}",
+		"format-icons": ["", "", ""]
+	},
+
+	"battery": {
+		"states": {
+			// "good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{capacity}% {icon}",
+		"format-full": "{capacity}% {icon}",
+		"format-charging": "{capacity}% 󰂄",
+		"format-plugged": "{capacity}% ",
+		"format-alt": "{time} {icon}",
+		// "format-good": "", // An empty format will hide the module
+		// "format-full": "",
+		"format-icons": [" ", " ", " ", " ", " "],
+		"interval": 1
+	},
+
+	"wireplumber": {
+		"format": " {volume}%",
+		"format-muted": "󰝟"
+	},
+
+	"network": {
+		"format-wifi": "{essid} {bandwidthUpBytes}  | {bandwidthDownBytes}  ",
+		"format-ethernet": "{ipaddr}/{cidr} ",
+		"tooltip-format": "{ifname} via {gwaddr} ",
+		"format-linked": "{ifname} (No IP) ",
+		"format-disconnected": "Disconnected 󰤭 ",
+		"format-alt": "{essid} {bandwidthUpBits}  | {bandwidthDownBits}  ",
+		"format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+		"interval": 1
+	},
+
+	"cava": {
+		"cava_config": "$HOME/.config/cava/config",
+		"framerate": 60,
+		"autosens": 1,
+		"bars": 18,
+		"method": "pipewire",
+		"input_delay": 0,
+		"sleep_timer": 8,
+		"bar_delimiter": 0,
+		"format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ]
+	}
+}

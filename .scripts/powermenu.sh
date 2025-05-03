@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Similar to Wlogout
 
-rofiConfig="$HOME/.config/rofi/config-vi.rasi"
+source ~/.scripts/utils
 
-choice=$(echo -e "  Shutdown\n  Reboot\n󰍃  Logout" | rofi -x11 -config $rofiConfig -dmenu -i -p "Power Options")
+choice=$(echo -e "  Shutdown\n  Reboot\n󰍃  Logout" | vmenu -p "Power Options")
 
 case $choice in
 	"  Shutdown")

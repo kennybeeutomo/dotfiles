@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Screenshot script
 
-exitCode=1
+exitCode=0
 
 case $1 in
 	fullscreen )
@@ -19,7 +19,7 @@ case $1 in
 		killall wayfreeze
 		;;
 	* )
-		exit 1
+		exitCode=1
 		;;
 esac
 
