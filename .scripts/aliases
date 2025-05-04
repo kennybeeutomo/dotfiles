@@ -66,3 +66,5 @@ alias lgit='lazygit'
 touchx() {
 	touch "$@" && chmod +x "$@"
 }
+
+alias update='yay; yay -Qe > ~/dotfiles/pacman_packages'

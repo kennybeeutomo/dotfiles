@@ -3,12 +3,17 @@
 		"hyprland/workspaces"
 	],
 	"modules-center": [
-		"clock"
 	],
 	"modules-right": [
 		"tray",
+		"network",
 		"wireplumber",
-		"battery"
+		"disk",
+		"cpu",
+		"memory",
+		"temperature",
+		"battery",
+		"clock"
 	],
 
 	"include": "$HOME/.config/waybar/includes.jsonc"

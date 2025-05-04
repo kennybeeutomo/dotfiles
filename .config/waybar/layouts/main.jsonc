@@ -16,8 +16,5 @@
 		"clock"
 	],
 
-	"include": [
-		"$HOME/.config/waybar/modules.jsonc",
-		"$HOME/.config/waybar/config.jsonc"
-	]
+	"include": "$HOME/.config/waybar/includes.jsonc"
 }
