@@ -1,1 +1,1 @@
-/home/kenny/.config/nvim/lua/utils.lua
+../../nvim/lua/utils.lua
