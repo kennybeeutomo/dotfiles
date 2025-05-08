@@ -111,12 +111,13 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# ls colors for fd
+eval $(dircolors)
+
 # must be last
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ---- [ STARTUP COMMANDS ] ----
 
 # pfetch every startup except in nvim terminal
-[ "$TERM" = 'xterm-256color' ] || pfetch
-
-eval $(dircolors)
+[ -n "$NOFETCH" ] || [ "$TERM" = 'xterm-256color' ] || pfetch

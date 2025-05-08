@@ -76,7 +76,7 @@
 		// "thermal-zone": 2,
 		// "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
 		"interval": 1,
-		"critical-threshold": 80,
+		"critical-threshold": 60,
 		"format": "{temperatureC}°C {icon}",
 		"format-icons": ["", "", ""]
 	},
@@ -104,8 +104,8 @@
 	},
 
 	"network": {
-		"min-length": 36,
-		"max-length": 36,
+		"min-length": 38,
+		"max-length": 38,
 		"format-wifi": "{essid} {bandwidthUpBytes}  | {bandwidthDownBytes}  ",
 		"format-ethernet": "{ipaddr}/{cidr} ",
 		"tooltip-format": "{ifname} via {gwaddr} ",
