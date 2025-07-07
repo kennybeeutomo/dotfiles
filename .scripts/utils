@@ -30,6 +30,10 @@ pywal() {
 	wwal "$1" || return 1
 	wbctl.sh reload
 	killall -SIGUSR1 nvim -q
+
+	# reloading while notifications are active breaks dunst
+	dunstctl close-all
+	dunstctl reload
 }
 
 chwal() {
@@ -47,11 +51,11 @@ vmenu() {
 }
 
 die() {
-	hyprctl -q notify 3 3000 0 "$1"
+	dunstify -i 0 "$1"
 	exit 1
 }
 
 success() {
-	hyprctl -q notify 5 3000 0 "$1"
+	dunstify -i 0 "$1"
 	exit 0
 }

@@ -1,7 +1,7 @@
 [Added Associations]
 application/pdf=zathura.desktop;
-image/jpeg=swiv-jpeg.desktop;
-image/png=swiv-png.desktop;
+image/jpeg=gimp.desktop;swiv-jpeg.desktop;
+image/png=gimp.desktop;swiv-png.desktop;
 text/plain=nvim.desktop;
 
 [Default Applications]
