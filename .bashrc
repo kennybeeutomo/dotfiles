@@ -11,9 +11,9 @@ BLUEBG="\[$(tput setab 4)\]"
 RESET="\[$(tput sgr0)\]"
 PS1="${BLUEBG}${BLACK} \w \$${RESET}${BLUE} ${RESET}"
 
-if [ -f ~/.scripts/aliases ]; then
-	source ~/.scripts/aliases
-fi
+[ -f ~/.scripts/aliases ] && source ~/.scripts/aliases
+
+export HISTFILE="$XDG_STATE_HOME"/bash/history
 
 source "${BASH_COMPLETION_USER_FILE:-~/.bash_completion}"/alacritty
 eval "$(zoxide init bash)"

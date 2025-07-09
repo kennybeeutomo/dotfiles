@@ -1,5 +1,6 @@
 \.git
 \.gitignore
+\.gitmodules
 pacman_packages
 \.config/\.unused
 README.md
