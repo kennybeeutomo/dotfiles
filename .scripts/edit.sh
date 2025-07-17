@@ -11,7 +11,7 @@ terminal=alacritty
 configFiles=(
 	'uwsm'
 	'nvim'
-	'environment'
+	'environment variables'
 	'aliases'
 	'hyprland'
 	'alacritty'
@@ -22,6 +22,7 @@ configFiles=(
 	'scripts'
 	'todo'
 	'notes'
+	'expenses'
 	'desktop entries'
 	'mimeapps'
 )
@@ -32,9 +33,8 @@ case $configFile in
 	'uwsm' )
 		args=" $HOME/.config/uwsm/env"
 		;;
-	'environment' )
-		cmd="sudo -E $cmd"
-		args=" /etc/environment"
+	'environment variables' )
+		args=" $HOME/.profile"
 		;;
 	'aliases' )
 		args=" $HOME/.scripts/aliases"
@@ -70,6 +70,9 @@ case $configFile in
 	'notes' )
 		cmd+=' -c '
 		args="\"Neorg workspace notes\""
+		;;
+	'expenses' )
+		args=" $HOME/finance/expenses"
 		;;
 	'desktop entries' )
 		args=" $HOME/.local/share/applications"
