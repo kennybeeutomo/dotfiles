@@ -1,4 +1,5 @@
 @import "wal.css";
+@import "wal-extra.css";
 
 * {
     font-family: JetBrainsMono Nerd Font;
@@ -6,7 +7,7 @@
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: @background-rgba;
     border-bottom: 1px solid @color14;
     color: @foreground;
     transition-property: background-color;
@@ -68,9 +69,12 @@ button:hover {
 	padding: 0px;
     padding-left: 10px;
     padding-right: 10px;
+
     color: @color0;
-	border-radius: 4px;
     background-color: @color12;
+
+	border-radius: 4px;
+
 	margin: 3px;
 }
 
