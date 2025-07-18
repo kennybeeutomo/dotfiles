@@ -27,7 +27,7 @@ efibootmgr 18-3
 egl-wayland 4:1.1.19-1
 entr 5.7-1
 eza 0.22.1-1
-fastfetch 2.47.0-1
+fastfetch 2.48.0-1
 fd 10.2.0-1
 figlet 2.2.5-6
 figlet-fonts 1.0-3
@@ -44,13 +44,13 @@ greetd 0.10.3-1
 greetd-tuigreet 0.9.1-1
 grim 1.5.0-1
 grub 2:2.12.r292.g73d1c959-1
-haskell-language-server 2.0.0.0-90
+haskell-language-server 2.0.0.0-92
 htop 3.4.1-1
-hwinfo 24.0-1
+hwinfo 25.0-1
 hyprland 0.50.0-1
 hyprland-qt-support 0.1.0-7
 hyprlang 0.6.3-2
-hyprlock 0.8.2-3
+hyprlock 0.9.0-1
 hyprpicker 0.4.5-4
 hyprpolkitagent 0.1.2-8
 hyprprop-git 23.f106bbd-1
@@ -64,7 +64,7 @@ laptop-mode-tools 1.74-1
 lazygit 0.53.0-1
 lib32-nvidia-utils 575.64.03-1
 libnotify 0.8.6-1
-libreoffice-fresh 25.2.4-3
+libreoffice-fresh 25.2.5-1
 libva-nvidia-driver 0.0.14-1
 libva-utils 2.22.0-1
 linux 6.15.6.arch1-1
@@ -133,7 +133,7 @@ rlwrap 0.46.2-1
 rmpc 0.9.0-1
 rofi-wayland 1.7.9.1-1
 rofimoji 6.5.0-2
-rust 1:1.88.0-1
+rustup 1.28.2-3
 s-tui 1.2.0-1
 shell-color-scripts-git r113.576735c-1
 sof-firmware 2025.05-1
