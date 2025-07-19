@@ -72,9 +72,20 @@ function zle-line-init zle-keymap-select {
 		vicmd ) printf '\e[2 q' ;;
 	esac
 }
-
 zle -N zle-keymap-select
 zle -N zle-line-init
+
+function insert-newline {
+	LBUFFER+=$'\n'
+}
+zle -N insert-newline
+
+zle-yazi() {
+	zle kill-buffer
+	BUFFER='y'
+	zle accept-line
+}
+zle -N zle-yazi
 
 # ---- [ KEY MAPPINGS ] ----
 
@@ -88,6 +99,10 @@ bindkey -M menuselect "^H" vi-backward-char
 bindkey -M menuselect "^J" down-line-or-history
 bindkey -M menuselect "^K" up-line-or-history
 bindkey -M menuselect "^L" vi-forward-char
+bindkey -M viins "^[^M"    insert-newline
+bindkey -M vicmd "^[^M"    insert-newline
+bindkey -M viins "^Y"      zle-yazi
+bindkey -M vicmd "^Y"      zle-yazi
 
 # ---- [ ALIASES ] ----
 [ -f ~/.scripts/aliases ] && source ~/.scripts/aliases
