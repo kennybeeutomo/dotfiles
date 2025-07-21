@@ -75,11 +75,6 @@ function zle-line-init zle-keymap-select {
 zle -N zle-keymap-select
 zle -N zle-line-init
 
-function insert-newline {
-	LBUFFER+=$'\n'
-}
-zle -N insert-newline
-
 zle-yazi() {
 	zle kill-buffer
 	BUFFER='y'
@@ -99,8 +94,8 @@ bindkey -M menuselect "^H" vi-backward-char
 bindkey -M menuselect "^J" down-line-or-history
 bindkey -M menuselect "^K" up-line-or-history
 bindkey -M menuselect "^L" vi-forward-char
-bindkey -M viins "^[^M"    insert-newline
-bindkey -M vicmd "^[^M"    insert-newline
+bindkey -M viins "^[^M"    self-insert-unmeta
+bindkey -M vicmd "^[^M"    self-insert-unmeta
 bindkey -M viins "^Y"      zle-yazi
 bindkey -M vicmd "^Y"      zle-yazi
 
