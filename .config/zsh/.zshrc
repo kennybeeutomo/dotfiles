@@ -27,16 +27,13 @@ autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-$ZSH_VERSION
 
 # ---- [ PROMPT ] ----
-local prompt_fmt="%~ %0(?.%F{blue}.%F{red})%f "
-PS1=" $prompt_fmt"
-
 # Gets execution time
 # Retrieved and modified from https://gist.github.com/knadh/123bca5cfdae8645db750bfb49cb44b0
-function preexec() {
+get-start-time() {
 	start_time=$(date +%s%3N)
 }
 
-function precmd() {
+get-execution-time() {
 	if [ $start_time ]; then
 		local end_time=$(date +%s%3N)
 		local elapsed=$(( $end_time - $start_time ))
@@ -51,22 +48,47 @@ function precmd() {
 		local elapsed_s=$(( $elapsed % $minute / $second ))
 		local elapsed_ms=$(( $elapsed % $second ))
 
-		PS1="%F{cyan} "
+		local elapsed_fmt="%F{cyan}"
 
-		[ $elapsed_h -ne 0 ] && PS1+="${elapsed_h}h "
-		[ $elapsed_m -ne 0 ] && PS1+="${elapsed_m}m "
-		[ $elapsed_s -ne 0 ] && PS1+="${elapsed_s}s "
-		[[ $elapsed_m -eq 0 && $elapsed_h -eq 0 ]] && PS1+="${elapsed_ms}ms%f "
-		PS1+="$prompt_fmt"
+		[ $elapsed_h -ne 0 ] && elapsed_fmt+="${elapsed_h}h "
+		[ $elapsed_m -ne 0 ] && elapsed_fmt+="${elapsed_m}m "
+		[ $elapsed_s -ne 0 ] && elapsed_fmt+="${elapsed_s}s "
+		[[ $elapsed_m -eq 0 && $elapsed_h -eq 0 ]] && elapsed_fmt+="${elapsed_ms}ms%f"
+
+		echo -n "$elapsed_fmt "
 	fi
+}
 
-	unset start_time
+get-git-branch() {
+	if $(git rev-parse --is-inside-work-tree 2> /dev/null); then
+		echo -n "%F{blue} $(git branch --show-current)%f "
+	fi
+}
+
+get-prompt() {
+	echo -n " "
+
+	get-execution-time
+
+	echo -n "%~ "
+
+	get-git-branch
+
+	echo -n "%0(?.%F{blue}.%F{red})%f "
+}
+
+preexec() {
+	get-start-time
+}
+
+precmd() {
+	PS1="$(get-prompt)"
 }
 
 # ---- [ ZLE WIDGETS ] ----
 
 # bar cursor for vi insert mode
-function zle-line-init zle-keymap-select {
+zle-line-init zle-keymap-select() {
 	case $KEYMAP in
 		viins|main ) printf '\e[6 q' ;;
 		vicmd ) printf '\e[2 q' ;;
