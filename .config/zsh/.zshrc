@@ -53,9 +53,9 @@ get-execution-time() {
 		[ $elapsed_h -ne 0 ] && elapsed_fmt+="${elapsed_h}h "
 		[ $elapsed_m -ne 0 ] && elapsed_fmt+="${elapsed_m}m "
 		[ $elapsed_s -ne 0 ] && elapsed_fmt+="${elapsed_s}s "
-		[[ $elapsed_m -eq 0 && $elapsed_h -eq 0 ]] && elapsed_fmt+="${elapsed_ms}ms%f"
+		[[ $elapsed_m -eq 0 && $elapsed_h -eq 0 ]] && elapsed_fmt+="${elapsed_ms}ms%f "
 
-		echo -n "$elapsed_fmt "
+		echo -n "$elapsed_fmt"
 	fi
 }
 
