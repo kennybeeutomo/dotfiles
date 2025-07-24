@@ -5,5 +5,5 @@ tempDir='/tmp/clipboard'
 [ -d "$tempDir" ] || mkdir "$tempDir"
 file=$(mktemp --tmpdir=$tempDir)
 wl-paste -n > "$file"
-alacritty --class editClipboard -e ${EDITOR:nvim} "$file"
-cat "$file" | wl-copy -n
+alacritty --class editClipboard -e "${EDITOR:nvim}" "$file"
+wl-copy -n < "$file"

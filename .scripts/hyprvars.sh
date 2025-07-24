@@ -30,7 +30,7 @@ if [ $# -eq 3 ]; then
 			set
 			;;
 		'add' )
-			value=$(( $currentValue + $value ))
+			value=$(( currentValue + value ))
 			set
 			;;
 		* )
@@ -52,7 +52,7 @@ if [ $# -eq 2 ]; then
 			set
 			;;
 		'get' )
-			echo $currentValue
+			echo "$currentValue"
 			;;
 		* )
 			printUsage

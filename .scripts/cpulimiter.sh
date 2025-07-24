@@ -10,4 +10,4 @@ perf=$(echo "$perfs" | vmenu -select "$currPerf" -sep ' ' -p 'CPU Max Performanc
 
 [ -z "$perf" ] && exit 1
 
-echo $perf | pkexec tee /sys/devices/system/cpu/intel_pstate/max_perf_pct
+echo "$perf" | pkexec tee /sys/devices/system/cpu/intel_pstate/max_perf_pct

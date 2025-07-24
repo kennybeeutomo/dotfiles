@@ -3,7 +3,7 @@
 
 source ~/.scripts/utils
 
-layout=$(getoption waybar-config)
+layout=$(getoption waybar-config main.jsonc)
 
 start-waybar() {
 	waybar -c "$HOME/.config/waybar/layouts/$layout" &> /dev/null &
@@ -25,6 +25,7 @@ case $1 in
 		wbctl.sh reload
 		;;
 	pick )
+		# shellcheck disable=SC2012
 		choice="$(ls ~/.config/waybar/layouts | vmenu -select "$layout" -p 'Waybar')"
 		[ -n "$choice" ] && wbctl.sh config "$choice"
 		;;

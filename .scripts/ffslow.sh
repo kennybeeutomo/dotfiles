@@ -7,7 +7,7 @@ if [ $# -ne 1 ]; then
 fi
 
 freq=$(ffhz.sh "$1")
-slowFreq=$(($freq*4/5)) # freq * 0.8
+slowFreq=$((freq*4/5)) # freq * 0.8
 name=$(arename.sh "$1" '-slow')
 
 ffmpeg -i "$1" -filter:a "asetrate=$slowFreq" "$name"

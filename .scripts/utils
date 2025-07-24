@@ -2,16 +2,22 @@
 
 optionsDir="$XDG_DATA_HOME/dotfiles"
 
-getoption() {
-	cat "$optionsDir/$1"
+setoption() {
+	mkdir -p "$optionsDir"
+	echo "$2" > "$optionsDir/$1"
 }
 
-setoption() {
-	echo $2 > "$optionsDir/$1"
+# getoption <option> [<default value if option is not found>]
+getoption() {
+	if [ -f "$optionsDir/$1" ]; then
+		\cat "$optionsDir/$1"
+	else
+		[ -n "$2" ] && echo "$2"
+	fi
 }
 
 pickimg() {
-	swiv -t -o -b -N pickimg "$1"
+	swiv -t -o -b -N pickimg "$@"
 }
 
 swww-img() {
@@ -19,8 +25,10 @@ swww-img() {
 }
 
 wwal() {
-	local backend=$(getoption walbackend)
-	local saturation=$(getoption walsaturation)
+	# shellcheck disable=SC2155
+	local backend=$(getoption walbackend wal)
+	# shellcheck disable=SC2155
+	local saturation=$(getoption walsaturation 0.4)
 	local wallpaper="$1"
 	[ "$wallpaper" = auto ] && wallpaper="$(cat ~/.cache/wal/wal)"
 	wal --cols16 lighten --backend "$backend" --saturate "$saturation" -n -s -i "$wallpaper"
@@ -47,7 +55,7 @@ rmenu() {
 
 vmenu() {
 	local rofiConfig="$HOME/.config/rofi/config-vi.rasi"
-	rmenu -config $rofiConfig "$@"
+	rmenu -config "$rofiConfig" "$@"
 }
 
 die() {
@@ -58,4 +66,13 @@ die() {
 success() {
 	dunstify -i 0 "$1"
 	exit 0
+}
+
+execfor() {
+	cmd=$1
+	shift
+	files=("$@")
+	for f in "${files[@]}"; do
+		eval "$cmd \"$f\""
+	done
 }

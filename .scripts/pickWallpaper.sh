@@ -3,6 +3,8 @@
 
 source ~/.scripts/utils
 
+wallpaperDir="$HOME/Pictures/Wallpaper"
+
 prompt='Change Wallpaper'
 
 case $1 in
@@ -10,29 +12,16 @@ case $1 in
 	justpywal ) prompt+=' (Just Pywal)';;
 esac
 
-dirs=$(ls ~/Pictures)
+# shellcheck disable=SC2012
+chosenDir=$(ls "$wallpaperDir" | vmenu -p "$prompt")
 
-extraDirs=(
-	"$2"
-)
+if ! cd "$wallpaperDir/$chosenDir"; then
+	echo 'No directory chosen'
+	exit 1
+fi
 
-# TODO: exclude directories
-excludedDirs=(
-	'Icons'
-	'rices'
-	'Screenshots'
-	'Upscayl'
-)
-
-for dir in $extraDirs; do
-	dirs+="\n$dir"
-done
-
-chosenDir=$(echo -e "${dirs[@]}" | vmenu -p "$prompt")
-[ -z "$chosenDir" ] && echo 'No directory chosen' && exit 1
-wallpaperDir=$(fd -a "$chosenDir" "$HOME/Pictures")
-
-wallpaper=$(pickimg "$wallpaperDir")
+wallpapers=$(find . -maxdepth 0)
+wallpaper=$(pickimg "$wallpapers")
 
 case $1 in
 	'pywal' )

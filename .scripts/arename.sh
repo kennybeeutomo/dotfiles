@@ -10,7 +10,7 @@ input="$1"
 suffix="$2"
 
 base="${input%.*}"
-extension="${input#$base}"
+extension="${input#"$base"}"
 output="${base}${suffix}${extension}"
 
 echo "$output"

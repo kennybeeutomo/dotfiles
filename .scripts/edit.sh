@@ -85,4 +85,4 @@ case $configFile in
 		;;
 esac
 
-eval $terminal --class 'edit.sh' -e $cmd $args
+eval $terminal --class 'edit.sh' -e "$cmd" "$args"

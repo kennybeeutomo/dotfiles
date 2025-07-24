@@ -14,7 +14,7 @@ mpd='mpd.PipeWire Sound Server'
 output_fl="${1:-$mpd}:output_FL"
 output_fr="${1:-$mpd}:output_FR"
 
-if [ $(echo $(pw-filter-id.sh "port.alias" "\"$output_fl\"" | wc -l)) -gt 1 ]; then
+if [ "$(pw-filter-id.sh "port.alias" "\"$output_fl\"" | wc -l)" -gt 1 ]; then
 	die 'Multiple outputs'
 fi
 

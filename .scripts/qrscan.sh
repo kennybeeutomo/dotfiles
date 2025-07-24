@@ -16,6 +16,6 @@ trap "cleanup '$SCR_IMG'" EXIT
 
 "$screenshot" selection "$SCR_IMG/scr.png" || die "Scan cancelled"
 scanResult="$(zbarimg -Sqrcode.enable -q --raw "$SCR_IMG/scr.png")"
-[ -z $scanResult ] && die "Scan failed"
-wl-copy $scanResult
+[ -z "$scanResult" ] && die "Scan failed"
+wl-copy "$scanResult"
 success "Scan result copied to clipboard"

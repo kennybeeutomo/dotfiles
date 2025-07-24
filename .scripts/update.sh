@@ -3,5 +3,5 @@
 
 yay
 yay -Qe > ~/dotfiles/pacman_packages
-cd ~/dotfiles
+cd ~/dotfiles || exit 1
 git add pacman_packages

@@ -6,7 +6,8 @@ source ~/.scripts/utils
 booksDir="$HOME/books"
 rofi="rmenu -p Books"
 
-dir=$(ls $booksDir | $rofi)
+# shellcheck disable=SC2012
+dir=$(ls "$booksDir" | $rofi)
 [ -z "$dir" ] && exit 1
 
 file="$booksDir/$dir/$(fd --base-directory "$booksDir/$dir" -e pdf | $rofi)"

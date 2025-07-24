@@ -7,4 +7,5 @@ if [ $# -eq 0 ]; then
 fi
 
 cp -r "$HOME/.scripts/project-templates/$1" "./$2"
-sed -i "s/{PROGRAM_NAME}/$2/" "./$2/Makefile"
+
+find . -type f -exec sed -i "s/{PROGRAM_NAME}/$2/g" {} ';'

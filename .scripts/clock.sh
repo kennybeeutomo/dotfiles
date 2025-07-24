@@ -23,10 +23,10 @@ draw() {
 	Time=$(date '+%H : %M : %S')
 	Date=$(date '+%A, %d %B %Y')
 
-	Date_len=$(echo "$Date" | wc -m)
+	Date_len=${#Date}
 
-	Date_pos=$(( $cols / 2 + $Date_len / 2 ))
-	Time_pos=$(( $rows / 2 - $figlet_height / 2 ))
+	Date_pos=$(( cols / 2 + Date_len / 2 ))
+	Time_pos=$(( rows / 2 - figlet_height / 2 ))
 
 	tput cup $Time_pos
 

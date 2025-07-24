@@ -4,24 +4,24 @@
 exitCode=0
 
 screenshotSelection() {
+	path=$1
+
 	wayfreeze &
 	sleep 0.1
-	if [ -z "$1" ]; then
-		grim -g "$(slurp $slurpOpts)"
+
+	if [ -n "$path" ]; then
+		grim -g "$(slurp -o)" "$path"
 	else
-		grim -g "$(slurp $slurpOpts)" "$1"
+		grim -g "$(slurp -o)"
 	fi
+
 	exitCode=$?
 	killall wayfreeze
 }
 
 case $1 in
 	fullscreen )
-		grim $path
-		;;
-	monitor )
-		slurpOpts='-o'
-		screenshotSelection "$2"
+		grim
 		;;
 	selection )
 		screenshotSelection "$2"

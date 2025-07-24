@@ -4,6 +4,6 @@
 
 until [ "$input" == 'q' ]; do
 	colorscript -r
-	read -n 1 -s input
+	read -n 1 -sr input
 	clear
 done

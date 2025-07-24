@@ -6,6 +6,6 @@ source ~/.scripts/utils
 backend=$(getoption walbackend)
 backends='wal colorz colorthief haishoku'
 
-choice=$(echo "$backends" | vmenu -select $backend -sep ' ' -p "Pywal Backends")
+choice=$(echo "$backends" | vmenu -select "$backend" -sep ' ' -p "Pywal Backends")
 
 [ -n "$choice" ] && setoption walbackend "$choice" && pywal auto
