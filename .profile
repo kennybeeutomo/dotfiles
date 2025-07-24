@@ -25,6 +25,7 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export GOPATH="$XDG_DATA_HOME"/go
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export GHCUP_USE_XDG_DIRS=1
 
 # Colors
 export XRES_PATH="$HOME/.cache/wal/colors.Xresources"
@@ -35,6 +36,7 @@ export PYTHON_BASIC_REPL=1
 export GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots"
 
 # PATH
+export PATH="${PATH}:$HOME/.local/bin"
 export PATH="${PATH}:$HOME/.scripts"
 export PATH="${PATH}:$GOPATH/bin"
 export PATH="${PATH}:$XDG_DATA_HOME/cargo/bin"
