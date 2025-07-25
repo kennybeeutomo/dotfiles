@@ -25,13 +25,32 @@ swww-img() {
 }
 
 wwal() {
+	local cmd='wal --cols16 lighten -n -s'
+
 	# shellcheck disable=SC2155
 	local backend=$(getoption walbackend wal)
+	cmd+=" --backend '$backend'"
+
 	# shellcheck disable=SC2155
-	local saturation=$(getoption walsaturation 0.4)
+	local saturation=$(getoption walsaturation None)
+
 	local wallpaper="$1"
 	[ "$wallpaper" = auto ] && wallpaper="$(cat ~/.cache/wal/wal)"
-	wal --cols16 lighten --backend "$backend" --saturate "$saturation" -n -s -i "$wallpaper"
+	cmd+=" -i '$wallpaper'"
+
+	case "$saturation" in
+		None )
+			;;
+		0.[0-9] | 1.0 )
+			cmd+=" --saturate '$saturation'"
+			;;
+		* )
+			echo 'Invalid saturation'
+			return 1
+			;;
+	esac
+
+	eval "$cmd"
 }
 
 pywal() {
@@ -75,4 +94,25 @@ execfor() {
 	for f in "${files[@]}"; do
 		eval "$cmd \"$f\""
 	done
+}
+
+jqCopyValue() {
+	a=$1
+	b=$2
+	var=$3
+
+	aValue=$(jq "$var" "$a")
+	result=$(jq "$var |= $aValue" "$b")
+	echo "$result" > "$b"
+}
+
+jqEqualValue() {
+	a=$1
+	b=$2
+	var=$3
+
+	aValue=$(jq "$var" "$a")
+	bValue=$(jq "$var" "$b")
+
+	[ "$aValue" = "$bValue" ]
 }
