@@ -27,16 +27,19 @@ swww-img() {
 wwal() {
 	local cmd='wal --cols16 lighten -n -s'
 
+	local wallpaper="$1"
+	[ "$wallpaper" = auto ] && wallpaper="$(cat ~/.cache/wal/wal)"
+	[ ! -f "$wallpaper" ] && return 1
+	cmd+=" -i '$wallpaper'"
+
+	shift
+
 	# shellcheck disable=SC2155
 	local backend=$(getoption walbackend wal)
 	cmd+=" --backend '$backend'"
 
 	# shellcheck disable=SC2155
 	local saturation=$(getoption walsaturation None)
-
-	local wallpaper="$1"
-	[ "$wallpaper" = auto ] && wallpaper="$(cat ~/.cache/wal/wal)"
-	cmd+=" -i '$wallpaper'"
 
 	case "$saturation" in
 		None )
@@ -75,6 +78,21 @@ rmenu() {
 vmenu() {
 	local rofiConfig="$HOME/.config/rofi/config-vi.rasi"
 	rmenu -config "$rofiConfig" "$@"
+}
+
+optionmenu() {
+	rofimode=$1; shift # rmenu | vmenu
+	prompt=$1; shift
+	option=$1; shift
+	optionValue=$(getoption "$option")
+
+	options=("$@")
+
+	IFS=$'\n'
+	choice=$(echo "${options[*]}" | "$rofimode" -select "$optionValue" -p "$prompt")
+	IFS=' '
+
+	[ -n "$choice" ] && eval setoption '$option' '$choice'
 }
 
 die() {
