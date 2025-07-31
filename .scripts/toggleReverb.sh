@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Script to toggle reverb by switching pipewire links between reverb sink and headphones sink
 
+# shellcheck disable=SC1090
 source ~/.scripts/utils
 
 # port.alias

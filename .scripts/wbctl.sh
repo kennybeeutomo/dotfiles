@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Waybar control script
 
+# shellcheck disable=SC1090
 source ~/.scripts/utils
 
 layout=$(getoption waybar-config main.jsonc)

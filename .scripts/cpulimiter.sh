@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # script to change cpu max performance in percent as in /sys/devices/system/cpu/intel_pstate/max_perf_pct
 
+# shellcheck disable=SC1090
 source ~/.scripts/utils
 
 currPerf=$(cat /sys/devices/system/cpu/intel_pstate/max_perf_pct)

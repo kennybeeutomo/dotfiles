@@ -2,6 +2,7 @@
 # Script taken and modified a bit from https://gist.github.com/CapMousse/454ec041880e78b4e3a894e7a4033faa
 # Dependencies: tesseract-ocr imagemagick wl-clipboard
 
+# shellcheck disable=SC1090
 source ~/.scripts/utils
 
 screenshot="$HOME/.scripts/screenshot.sh"

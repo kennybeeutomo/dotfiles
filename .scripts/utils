@@ -2,6 +2,7 @@
 
 optionsDir="$XDG_DATA_HOME/dotfiles"
 
+# setoption <option> <value>
 setoption() {
 	mkdir -p "$optionsDir"
 	echo "$2" > "$optionsDir/$1"
@@ -31,9 +32,11 @@ pickimg() {
 }
 
 swww-img() {
-	swww img -t grow --transition-pos top-right --transition-step 13 --transition-fps 144 --transition-duration 0.5 "$1"
+	swww img -t grow --transition-pos top-right --transition-step 13 --transition-fps 144 --transition-duration 0.5 "$@"
 }
 
+# wwal <wallpaper> | auto
+# run pywal with dotfiles options
 wwal() {
 	local cmd='wal --cols16 lighten -n -s'
 
@@ -66,6 +69,7 @@ wwal() {
 	eval "$cmd"
 }
 
+# run wwal and update colorthemes of other programs
 pywal() {
 	local pywalLockFile="$optionsDir/pywal-lock"
 
@@ -85,61 +89,96 @@ pywal() {
 	dunstctl reload
 }
 
+# pywal and change wallpaper
 chwal() {
 	pywal "$1"
 	swww-img "$1"
 }
 
+# alias of rofi-dmenu
 rmenu() {
 	rofi -x11 -dmenu -i -no-custom "$@"
 }
 
+# alias of rofi-dmenu with vim bindings
 vmenu() {
 	local rofiConfig="$HOME/.config/rofi/config-vi.rasi"
 	rmenu -config "$rofiConfig" "$@"
 }
 
+# optionmenu (rmenu | vmenu) <prompt msg> <option to modify> (<option> ...)
+# Opens rofi that lists every <option> and sets <option to modify> to the selected one
 optionmenu() {
-	rofimode=$1; shift # rmenu | vmenu
-	prompt=$1; shift
-	option=$1; shift
-	optionValue=$(getoption "$option")
+	local rofimode=$1; shift # rmenu | vmenu
+	local prompt=$1; shift
+	local option=$1; shift
 
-	options=("$@")
+	# shellcheck disable=SC2155
+	local optionValue=$(getoption "$option")
+
+	local options=("$@")
 
 	IFS=$'\n'
-	choice=$(echo "${options[*]}" | "$rofimode" -select "$optionValue" -p "$prompt")
+	# shellcheck disable=SC2155
+	local choice=$(echo "${options[*]}" | "$rofimode" -select "$optionValue" -p "$prompt")
 	IFS=' '
 
 	[ -n "$choice" ] && eval setoption '$option' '$choice'
 }
 
+# persisterm <working dir> <class> <command>
+# Start command in a new terminal, and don't exit terminal when the command exits
+persisterm() {
+	local wd=$1; shift
+	local class=$1; shift
+	[ ! -d "$wd" ] && return 1
+	[ "$class" = '-' ] && class='persisterm'
+	NOFETCH=1 alacritty --class "$class" --working-directory "$wd" -e zsh -c "$*; zsh"
+}
+
+# persistvim <file>
+# Nvim in persistent terminal
+persistvim() {
+	local class=$1; shift
+	local file=$1; shift
+	local wd; wd=$(dirname "$file")
+	[ ! -e "$file" ] && return 1
+	[ -d "$file" ] && wd=$file
+	persisterm "$wd" "$class" "nvim '$file'" "$@"
+}
+
+# execfor <cmd> (<file> ...)
+# Executes <cmd> for each <file>
 execfor() {
-	cmd=$1
+	local cmd=$1
 	shift
-	files=("$@")
+	local files=("$@")
 	for f in "${files[@]}"; do
 		eval "$cmd \"$f\""
 	done
 }
 
+# jqCopyValue <src> <dest> <variable>
+# Copy the value of <variable> from <src> to <dest>
 jqCopyValue() {
-	a=$1
-	b=$2
-	var=$3
+	local src=$1
+	local dest=$2
+	local var=$3
 
-	aValue=$(jq "$var" "$a")
-	result=$(jq "$var |= $aValue" "$b")
-	echo "$result" > "$b"
+	local srcValue; srcValue=$(jq "$var" "$src") || return 1
+	local result; result=$(jq "$var |= $srcValue" "$dest") || return 1
+	echo "$result" > "$dest"
 }
 
+# jqEqualValue <file a> <file b> <variable>
+# Test if the value of <variable> in <file a> and in <file b> is equal
 jqEqualValue() {
-	a=$1
-	b=$2
-	var=$3
+	local a=$1
+	local b=$2
+	local var=$3
 
-	aValue=$(jq "$var" "$a")
-	bValue=$(jq "$var" "$b")
+	local aValue; aValue=$(jq "$var" "$a") || return 1
+	local bValue; bValue=$(jq "$var" "$b") || return 1
 
 	[ "$aValue" = "$bValue" ]
 }

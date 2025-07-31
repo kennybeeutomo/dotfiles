@@ -1,88 +1,28 @@
 #!/usr/bin/env bash
 # Rofi script to edit config files
 
+# shellcheck disable=SC1090
 source ~/.scripts/utils
 
-EDITOR=${EDITOR:-nvim}
-
-cmd="$EDITOR"
-terminal=alacritty
-
-configFiles=(
-	'uwsm'
-	'nvim'
-	'environment variables'
-	'aliases'
-	'hyprland'
-	'alacritty'
-	'yazi'
-	'rofi'
-	'waybar'
-	'zsh'
-	'scripts'
-	'todo'
-	'notes'
-	'expenses'
-	'desktop entries'
-	'mimeapps'
+declare -A configFiles=(
+	['uwsm']="$HOME/.config/uwsm/env"
+	['environment variables']="$HOME/.profile"
+	['aliases']="$HOME/.scripts/aliases"
+	['hyprland']="$HOME/.config/hypr"
+	['nvim']="$HOME/.config/nvim"
+	['alacritty']="$HOME/.config/alacritty/alacritty.toml"
+	['yazi']="$HOME/.config/yazi"
+	['rofi']="$HOME/.config/rofi"
+	['waybar']="$HOME/.config/waybar"
+	['zsh']="$HOME/.config/zsh"
+	['scripts']="$HOME/.scripts"
+	['todo']="$HOME/neorg/todo/index.norg"
+	['notes']="$HOME/neorg/notes/index.norg"
+	['expenses']="$HOME/finance/expenses"
+	['desktop entries']="$HOME/.local/share/applications"
+	['mimeapps']="$HOME/.config/mimeapps.list"
 )
 
-configFile=$(IFS=';'; echo "${configFiles[*]}" | rmenu -sep ';' -p 'Edit')
+configFile=$(IFS=';'; echo "${!configFiles[*]}" | rmenu -sep ';' -p 'Edit')
 
-case $configFile in
-	'uwsm' )
-		args=" $HOME/.config/uwsm/env"
-		;;
-	'environment variables' )
-		args=" $HOME/.profile"
-		;;
-	'aliases' )
-		args=" $HOME/.scripts/aliases"
-		;;
-	'hyprland' )
-		args=" $HOME/.config/hypr"
-		;;
-	'nvim' )
-		args=" $HOME/.config/nvim"
-		;;
-	'alacritty' )
-		args=" $HOME/.config/alacritty/alacritty.toml"
-		;;
-	'yazi' )
-		args=" $HOME/.config/yazi"
-		;;
-	'rofi' )
-		args=" $HOME/.config/rofi"
-		;;
-	'waybar' )
-		args=" $HOME/.config/waybar"
-		;;
-	'zsh' )
-		args=" $HOME/.config/zsh"
-		;;
-	'scripts' )
-		args=" $HOME/.scripts"
-		;;
-	'todo' )
-		cmd+=' -c '
-		args="\"Neorg workspace todo\""
-		;;
-	'notes' )
-		cmd+=' -c '
-		args="\"Neorg workspace notes\""
-		;;
-	'expenses' )
-		args=" $HOME/finance/expenses"
-		;;
-	'desktop entries' )
-		args=" $HOME/.local/share/applications"
-		;;
-	'mimeapps' )
-		args=" $HOME/.config/mimeapps.list"
-		;;
-	* )
-		exit 1
-		;;
-esac
-
-eval $terminal --class 'edit.sh' -e "$cmd" "$args"
+persistvim 'edit.sh' "${configFiles[$configFile]}"

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Rofi script to search books
 
+# shellcheck disable=SC1090
 source ~/.scripts/utils
 
 booksDir="$HOME/books"

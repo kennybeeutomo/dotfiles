@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Similar script to ocr.sh but to scan qr
 
+# shellcheck disable=SC1090
 source ~/.scripts/utils
 
 screenshot="$HOME/.scripts/screenshot.sh"

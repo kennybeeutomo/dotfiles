@@ -69,4 +69,11 @@ touchx() {
 	touch "$@" && chmod +x "$@"
 }
 
-alias update='update.sh'
+update() {
+	(
+		yay
+		cd ~/dotfiles || exit 1
+		yay -Qe > pacman_packages
+		git add pacman_packages
+	)
+}

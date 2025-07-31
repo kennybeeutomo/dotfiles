@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Script to change wallpaper and automate pywal
 
+# shellcheck disable=SC1090
 source ~/.scripts/utils
 
 

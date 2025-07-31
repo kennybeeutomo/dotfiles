@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 # Rofi script for code experiments
 
+# shellcheck disable=SC1090
 source ~/.scripts/utils
 
-EDITOR=${EDITOR:-nvim}
-
-cmd="$EDITOR"
-terminal=alacritty
 experimentsDir="$HOME/code/experimentation"
 
 # shellcheck disable=SC2012
@@ -15,10 +12,9 @@ language=$(ls "$experimentsDir" | rmenu -p 'Experiment')
 
 # go to chosen dir
 experimentsDir+="/$language"
-cd "$experimentsDir" || exit
+[ ! -d "$experimentsDir" ] && exit 1
 
 # find main file
-mainFile="$(find . -name 'main.*' -not -name 'main.o')"
-args+="$mainFile"
+mainFile="$(find "$experimentsDir" -name 'main.*' -not -name 'main.o')"
 
-eval $terminal --class 'experiment.sh' -e "$cmd" "$args"
+persistvim 'experiment.sh' "$mainFile"
