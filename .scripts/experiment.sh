@@ -12,9 +12,9 @@ language=$(ls "$experimentsDir" | rmenu -p 'Experiment')
 
 # go to chosen dir
 experimentsDir+="/$language"
-[ ! -d "$experimentsDir" ] && exit 1
+cd "$experimentsDir" || exit 1
 
 # find main file
-mainFile="$(find "$experimentsDir" -name 'main.*' -not -name 'main.o')"
+mainFile="$(find . -name 'main.*' -not -name 'main.o')"
 
-persistvim 'experiment.sh' "$mainFile"
+persisterm . 'experiment.sh' "nvim '$mainFile'"
