@@ -26,5 +26,6 @@ set index-active-fg "{background}"
 set render-loading-bg "{background}"
 set render-loading-fg "{foreground}"
 
-set highlight-active-color rgba(182,196,223,0.5)
-set highlight-color rgba(117,136,195,0.5)
+set highlight-active-color "rgba({color14.rgb}, 0.5)"
+set highlight-color "rgba({color6.rgb}, 0.5)"
+set highlight-fg "{foreground}"

@@ -3,8 +3,6 @@ include "../../../.cache/wal/colors-zathura"
 set selection-clipboard clipboard
 set selection-notification false
 
-set font "JetBrainsMono Nerd Font"
-
 set recolor true
 set recolor-keephue true
 set recolor-reverse-video true
