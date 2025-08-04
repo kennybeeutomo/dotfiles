@@ -136,7 +136,7 @@ persisterm() {
 	NOFETCH=1 alacritty --class "$class" --working-directory "$wd" -e zsh -c "$*; zsh"
 }
 
-# persistvim <file>
+# persistvim <class> <file>
 # Nvim in persistent terminal
 persistvim() {
 	local class=$1; shift
