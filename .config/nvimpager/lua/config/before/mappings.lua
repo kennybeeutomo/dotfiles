@@ -23,9 +23,8 @@ set({"n", "v"}, "<C-l>", "zL")
 set({"n", "v"}, "<C-h>", "zH")
 
 -- Options
-set("n", "<leader>tw", function()
-	vim.o.wrap = not vim.o.wrap
-end, { desc = "Toggle Wrapping" })
+set("n", "<leader>tw", function() vim.o.wrap = not vim.o.wrap end, { desc = "Toggle Wrapping" })
+set("n", "<leader>tic", function() vim.o.ignorecase = not vim.o.ignorecase end, { desc = "Toggle Ignore Case" })
 
 -- Selection
 set("n", "<leader>a", "ggVG", { desc = "Select all" })
@@ -39,6 +38,8 @@ set("n", "g?", "<cmd>WhichKey<cr>")
 
 -- Command Mode
 set("n", ";", "q:i", { desc = "Open command mode in vim mode" })
+set("c", "<C-F>", "<Right>")
+set("c", "<C-B>", "<Left>")
 
 -- pywal16
 set("n", "<leader>pw", utils.refreshpywal, { desc = "Reload pywal16" })

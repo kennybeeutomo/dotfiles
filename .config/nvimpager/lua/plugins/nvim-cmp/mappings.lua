@@ -8,6 +8,11 @@ local cmp = require("cmp")
 
 cmp.setup({
 	mapping = {
+		["<C-y>"] = cmp.mapping.scroll_docs(-4),
+		["<C-e>"] = cmp.mapping.scroll_docs(4),
+		["<C-h>"] = cmp.mapping.abort(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+
 		["<C-j>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()

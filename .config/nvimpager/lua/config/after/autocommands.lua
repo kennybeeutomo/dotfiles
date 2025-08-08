@@ -2,6 +2,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
 local utils = require("utils")
+local set = vim.keymap.set
 
 local pywal = augroup("pywal", { clear = true })
 autocmd({"Signal"}, {
@@ -18,12 +19,12 @@ autocmd({"Signal"}, {
 	desc = "Reload pywal on SIGUSR1 signal, useful after changing wallpapers"
 })
 
-local commentstrings = augroup("commentstrings", { clear = true })
-autocmd({"Filetype"}, {
-	pattern = "hyprlang",
-	group = commentstrings,
+local localMappings = augroup("localMappings", { clear = true })
+autocmd({"BufRead"}, {
+	pattern = "colors-readable.txt",
+	group = localMappings,
 	callback = function()
-		vim.opt.commentstring = "# %s"
+		set("n", "y", "f#ye0", { buffer = true, desc = "Copy color" })
 	end,
-	desc = "Set commentstring for hyprland conf files"
+	desc = "Pywal Colors"
 })

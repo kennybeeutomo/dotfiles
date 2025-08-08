@@ -4,6 +4,8 @@ vim.opt.ignorecase = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
+vim.opt.linebreak = true
+
 vim.opt.clipboard:append("unnamedplus")
 
 vim.opt.fillchars = { eob = ' ' }
