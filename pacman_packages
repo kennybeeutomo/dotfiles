@@ -60,7 +60,7 @@ laptop-mode-tools 1.74-1
 lazygit 0.54.1-1
 lib32-nvidia-utils 575.64.05-1
 libnotify 0.8.6-1
-libreoffice-fresh 25.2.5-1
+libreoffice-fresh 25.2.5-2
 libva-nvidia-driver 0.0.14-1
 libva-utils 2.22.0-1
 linux 6.15.9.arch1-1
@@ -130,7 +130,7 @@ rofimoji 6.6.0-2
 rustup 1.28.2-3
 s-tui 1.2.0-1
 shell-color-scripts-git r113.576735c-1
-shellcheck 0.11.0-3
+shellcheck 0.11.0-5
 sof-firmware 2025.05-1
 stow 2.4.1-1
 sweet-gtk-theme 6.0-1
@@ -159,7 +159,7 @@ vala 0.56.18-4
 w3m 0.5.3.git20230713_1-1
 waifu2x-ncnn-vulkan 20220728-3
 watchbind 0.2.1-1
-waybar-cava 0.13.0-2
+waybar-cava 0.14.0-1
 wayfreeze-git r65.8277f98-1
 wayvnc 0.9.1-1
 wev 1.1.0-1

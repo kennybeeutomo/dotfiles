@@ -1,8 +1,11 @@
 [general]
 import = [
+	# Colorscheme
 	"~/.cache/wal/colors-alacritty.toml",
-	"~/.config/alacritty/alacritty-opacity.toml",
 	# "~/.config/alacritty/alacritty-themes/themes/night_owl.toml",
+
+	# Config
+	"~/.config/alacritty/alacritty-opacity.toml",
 ]
 
 [font]
@@ -14,7 +17,6 @@ bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
 
 [keyboard]
 bindings = [
-	{ action = "ToggleViMode", key = "Space", mods = "Control" },
 	{ action = "ScrollLineUp", key = "k", mods = "Alt" },
 	{ action = "ScrollLineDown", key = "j", mods = "Alt" },
 	{ action = "ScrollPageUp", key = "k", mods = "Alt|Shift" },
