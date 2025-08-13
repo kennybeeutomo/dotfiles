@@ -6,30 +6,44 @@ source ~/.scripts/utils
 
 
 changeWallpaper() {
-	local wallpaperDir="$HOME/Pictures/Wallpaper"
-	local prompt
+	wallpaperDir="$HOME/Pictures/Wallpaper"
 
-	case "$1" in
+	opts=$(getopt -o h -- "$@")
+	eval set -- "$opts"
+	while [ -n "$1" ]; do
+		case "$1" in
+			-h ) hidden=1; shift ;;
+			-- ) shift; break ;;
+			* ) return 1 ;;
+		esac
+	done
+
+	action=$1; shift
+
+	case "$action" in
 		chwal ) prompt='Change Wallpaper and Colors' ;;
 		nopywal ) prompt='Change Wallpaper';;
 		justpywal ) prompt='Change Colors';;
 		* ) return 1 ;;
 	esac
 
-	# shellcheck disable=SC2012,SC2155
-	local chosenDir=$(ls "$wallpaperDir" | vmenu -p "$prompt")
+	if [ -n "$hidden" ]
+	then dirList=$(ls -A "$wallpaperDir")
+	else dirList=$(ls "$wallpaperDir")
+	fi
+
+	chosenDir=$(vmenu -p "$prompt" <<< "$dirList")
 
 	if ! cd "$wallpaperDir/$chosenDir"; then
 		echo 'No directory chosen'
 		return 1
 	fi
 
-	# shellcheck disable=SC2155
-	local wallpapers=$(find . -maxdepth 0)
+	wallpapers=$(find . -maxdepth 0)
 
 	wallpaper=$(pickimg "$wallpapers")
 
-	case "$1" in
+	case "$action" in
 		chwal ) chwal "$wallpaper" ;;
 		nopywal ) swww-img "$wallpaper" ;;
 		justpywal ) pywal "$wallpaper" ;;
@@ -63,18 +77,14 @@ saturate() {
 }
 
 changeBlackColors() {
-	# shellcheck disable=SC2155
-	local wallpaper=$(sed 's/[\/.]/_/g' "$HOME/.cache/wal/wal")
+	wallpaper=$(sed 's/[\/.]/_/g' "$HOME/.cache/wal/wal")
 
-	# shellcheck disable=SC2155
-	local saturation=$(getoption walsaturation None)
+	saturation=$(getoption walsaturation None)
 
 	[ "$saturation" = 'None' ] && echo 'Saturation cannot be None' && exit 1
 
-	# shellcheck disable=SC2155
-	local backend=$(getoption walbackend wal)
+	backend=$(getoption walbackend wal)
 
-	local normal current
 	normal=$(getWalScheme "${wallpaper}*${backend}_None*") || exit 1
 	current=$(getWalScheme "${wallpaper}*${backend}_${saturation}*") || exit 1
 
@@ -95,7 +105,7 @@ changeBlackColors() {
 
 main() {
 	case "$1" in
-		chwal | nopywal | justpywal ) changeWallpaper "$1" ;;
+		chwal | nopywal | justpywal ) changeWallpaper "$@" ;;
 
 		saturateBlackColors | unsaturateBlackColors | toggleBlackColors ) changeBlackColors "$1" ;;
 
