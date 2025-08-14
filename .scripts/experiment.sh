@@ -15,6 +15,6 @@ experimentsDir+="/$language"
 cd "$experimentsDir" || exit 1
 
 # find main file
-mainFile="$(find . -name 'main.*' -not -name 'main.o')"
+mainFile=$(cat .mainpath) || exit 1
 
 persisterm . 'experiment.sh' "nvim '$mainFile'"
