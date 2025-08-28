@@ -88,14 +88,26 @@ precmd() {
 # ---- [ ZLE WIDGETS ] ----
 
 # bar cursor for vi insert mode
-zle-line-init zle-keymap-select() {
+updateCursor() {
 	case $KEYMAP in
 		viins|main ) printf '\e[6 q' ;;
 		vicmd ) printf '\e[2 q' ;;
 	esac
 }
+
+zle-line-init zle-keymap-select() {
+	updateCursor
+}
 zle -N zle-keymap-select
 zle -N zle-line-init
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+edit-command-line-update() {
+	zle edit-command-line
+	updateCursor
+}
+zle -N edit-command-line-update
 
 zle-yazi() {
 	zle kill-buffer
@@ -120,6 +132,8 @@ bindkey -M viins "^[^M"    self-insert-unmeta
 bindkey -M vicmd "^[^M"    self-insert-unmeta
 bindkey -M viins "^Y"      zle-yazi
 bindkey -M vicmd "^Y"      zle-yazi
+bindkey -M vicmd "^N"      edit-command-line-update
+bindkey -M viins "^N"      edit-command-line-update
 
 # ---- [ ALIASES ] ----
 [ -f ~/.scripts/aliases ] && source ~/.scripts/aliases

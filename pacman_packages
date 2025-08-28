@@ -26,10 +26,10 @@ egl-wayland 4:1.1.20-1
 entr 5.7-1
 eza 0.23.0-1
 fastfetch 2.50.2-1
-fd 10.2.0-1
+fd 10.3.0-1
 figlet 2.2.5-6
 figlet-fonts 1.1-1
-firefox 142.0-1
+firefox 142.0.1-1
 freedownloadmanager 6.29.1.6392-1
 fzf 0.65.1-1
 gdb 16.3-1
@@ -98,7 +98,7 @@ nvtop 3.2.0-1
 nwg-displays 0.3.25-1
 nwg-look 1.0.6-1
 openssh 10.0p1-4
-parallel 20250722-2
+parallel 20250822-1
 pavucontrol 1:6.1-1
 perl-image-exiftool 13.30-3
 perl-rename 1.16-2
@@ -130,7 +130,7 @@ rofimoji 6.6.0-2
 rustup 1.28.2-3
 s-tui 1.2.0-1
 shell-color-scripts-git r113.576735c-1
-shellcheck 0.11.0-18
+shellcheck 0.11.0-22
 sof-firmware 2025.05.1-1
 stow 2.4.1-1
 sweet-gtk-theme 6.0-1
