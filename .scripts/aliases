@@ -26,7 +26,7 @@ alias cls=' echo -ne "\033c"'
 
 alias cd='z'
 
-alias cat='bat'
+alias cat='bat -p --theme=base16 --paging=never'
 
 alias man='man -P nvimpager'
 alias info='info --vi-keys'
