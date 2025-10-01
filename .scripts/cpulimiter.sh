@@ -5,7 +5,7 @@
 source ~/.scripts/utils
 
 currPerf=$(cat /sys/devices/system/cpu/intel_pstate/max_perf_pct)
-perfs=$(echo {2..10}0)
+perfs=$(echo {1..10}0)
 
 perf=$(echo "$perfs" | vmenu -select "$currPerf" -sep ' ' -p 'CPU Max Performance (%)')
 
