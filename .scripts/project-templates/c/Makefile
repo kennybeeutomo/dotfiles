@@ -1,4 +1,4 @@
-TARGET = {PROGRAM_NAME}
+TARGET = main
 INSTALL_DIR = /usr/local/bin
 
 CFILES = $(wildcard src/*.c)
