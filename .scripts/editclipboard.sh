@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Script to edit clipboard in nvim
 
-tempDir='/tmp/clipboard'
+clipboardDir="$HOME/clipboard"
 
-[ -d "$tempDir" ] || mkdir "$tempDir"
-file=$(mktemp --tmpdir=$tempDir)
+[ -d "$clipboardDir" ] || mkdir "$clipboardDir"
+file="$clipboardDir/$(date +'%Y-%m-%d-%H-%M-%S-%N')"
+touch "$file"
 
 wl-paste -n > "$file"
 alacritty --class editClipboard -e "${EDITOR:-nvim}" "$file"
