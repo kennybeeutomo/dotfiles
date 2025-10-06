@@ -26,10 +26,13 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export GOPATH="$XDG_DATA_HOME"/go
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export GHCUP_USE_XDG_DIRS=1
+export MAVEN_OPTS=-Dmaven.repo.local="$XDG_DATA_HOME"/maven/repository
+export MAVEN_ARGS="--settings $XDG_CONFIG_HOME/maven/settings.xml"
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
 # Colors
 export XRES_PATH="$HOME/.cache/wal/colors.Xresources"
-source $HOME/.cache/wal/colors.sh
+source "$HOME/.cache/wal/colors.sh"
 
 # Program Settings
 export PYTHON_BASIC_REPL=1
