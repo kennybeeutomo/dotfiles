@@ -46,8 +46,10 @@ run: $(TARGET)
 	./$(TARGET)
 
 .PHONY: test
-test: $(TARGET)-test
-	./$(TARGET)-test
+test: $(TARGET)
+	bash test/test.sh
+# test: $(TARGET)-test
+# 	./$(TARGET)-test
 
 .PHONY: debug
 debug:
