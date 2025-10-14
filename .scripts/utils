@@ -81,8 +81,8 @@ pywal() {
 	touch "$pywalLockFile"
 
 	wwal "$1" || return 1
-	wbctl.sh reload
-	killall -SIGUSR1 nvim -q
+	killall -SIGUSR1 nvim -q &
+	wbctl.sh reload &
 
 	# reloading while notifications are active breaks dunst
 	dunstctl close-all
@@ -91,7 +91,7 @@ pywal() {
 
 # pywal and change wallpaper
 chwal() {
-	pywal "$1"
+	pywal "$1" &
 	swww-img "$1"
 }
 
