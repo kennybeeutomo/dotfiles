@@ -52,6 +52,9 @@ alias cfs='nvim $HOME/.scripts'
 alias todo='nvim -c "Neorg workspace todo"'
 alias notes='nvim -c "Neorg workspace notes"'
 
+alias exp='experiment.sh existing'
+alias expn='experiment.sh new'
+
 alias nmconnect='nmcli --ask device wifi connect'
 
 alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'

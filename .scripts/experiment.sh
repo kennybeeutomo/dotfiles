@@ -6,6 +6,19 @@ source ~/.scripts/utils
 
 experimentsDir="$HOME/code/experimentation"
 templatesDir="$HOME/.scripts/project-templates"
+detach=false # detach into a separate terminal (persisterm)
+
+opts=$(getopt -o d -- "$@")
+eval set -- "$opts"
+
+while [ -n "$1" ]; do
+	case $1 in
+		-d ) shift; detach=true ;;
+		-- ) shift; break
+			;;
+		* ) exit 1 ;;
+	esac
+done
 
 # shellcheck disable=SC2012
 language=$(ls "$templatesDir" | rmenu -p 'Experiment')
@@ -35,4 +48,8 @@ cd "$experimentDir" || exit 1
 # find main file
 mainFile=$(cat .mainpath) || exit 1
 
-persisterm . 'experiment.sh' "nvim '$mainFile'"
+if $detach; then
+	persisterm . 'experiment.sh' "nvim '$mainFile'"
+else
+	nvim "$mainFile"
+fi
