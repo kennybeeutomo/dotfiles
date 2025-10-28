@@ -182,3 +182,17 @@ jqEqualValue() {
 
 	[ "$aValue" = "$bValue" ]
 }
+
+# code <type> <project name>
+# Generates code project from template
+code() {
+	templatesDir="$HOME/.scripts/project-templates"
+	filetype=$1
+	projectname=$2
+
+	[ ! -d "$templatesDir/$filetype" ] && echo 'invalid filetype' && return 1
+
+	cp -r "$HOME/.scripts/project-templates/$filetype" "./$projectname"
+	find "./$projectname" -type f -exec sed -i "s/{PROGRAM_NAME}/$projectname/g" {} ';'
+}
+

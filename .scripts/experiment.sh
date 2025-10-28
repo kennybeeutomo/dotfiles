@@ -23,19 +23,20 @@ done
 # shellcheck disable=SC2012
 language=$(ls "$templatesDir" | rmenu -p 'Experiment')
 [ -z "$language" ] && exit 1
+experimentDir="$experimentsDir/$language"
 
 case "$1" in
 	'new' ) # create new experiment directory
 		date=$(date +'%Y-%m-%d-%H-%M-%S-%N')
-		experimentDir+="$experimentsDir/$language"
-		template="$templatesDir/$language"
+
 		mkdir -p "$experimentDir"
-		cp -r "$template" "$experimentDir/$date"
+		cd "$experimentDir" || exit
+
+		code "$language" "$date" || exit
+
 		experimentDir+="/$date"
 		;;
 	'existing' ) # edit in existing experiment directory
-		experimentDir="$experimentsDir/$language"
-
 		# reverse ls to put most recent one at the top of the rofi menu
 		# shellcheck disable=SC2012
 		experimentDir+="/$(ls -r "$experimentDir" | rmenu -p 'Experiment')"
