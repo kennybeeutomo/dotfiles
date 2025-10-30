@@ -3,6 +3,7 @@
 	"position": "top",
 	//"height": 30,
 	//"width": 1280,
+	"margin": "0 0 -2 0",
 	"spacing": 0,
 	"reload-style-on-change": true,
 	"expand-center": true
