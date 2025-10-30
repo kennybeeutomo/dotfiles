@@ -5,7 +5,7 @@
 source ~/.scripts/utils
 
 experimentsDir="$HOME/code/experimentation"
-templatesDir="$HOME/.scripts/project-templates"
+templatesDir="$HOME/.scripts/code-templates"
 detach=false # detach into a separate terminal (persisterm)
 
 opts=$(getopt -o d -- "$@")

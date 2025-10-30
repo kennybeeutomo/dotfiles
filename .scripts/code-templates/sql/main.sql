@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS table1;
+
+CREATE TABLE IF NOT EXISTS table1 (
+	ID CHAR(5)
+);
+
+DESCRIBE table1;
+
+SELECT * FROM table1;
