@@ -39,7 +39,9 @@ case "$1" in
 	'existing' ) # edit in existing experiment directory
 		# reverse ls to put most recent one at the top of the rofi menu
 		# shellcheck disable=SC2012
-		experimentDir+="/$(ls -r "$experimentDir" | rmenu -p 'Experiment')"
+		chosenDir="$(ls -r "$experimentDir" | rmenu -p 'Experiment')"
+		[ -z "$chosenDir" ] && exit 1
+		experimentDir+="/$chosenDir"
 		;;
 	* ) exit 1;;
 esac
