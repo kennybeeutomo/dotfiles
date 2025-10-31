@@ -71,7 +71,7 @@ lolcat 100.0.1-5
 lorien-bin 0.6.0-1
 luarocks 3.12.2-1
 man-db 2.13.1-1
-man-pages 6.15-1
+man-pages 6.16-1
 mariadb 12.0.2-1
 maven 3.9.11-1
 mediainfo 25.09-1
@@ -82,6 +82,7 @@ moreutils 0.70-1
 mpc 0.35-1
 mpd 0.24.6-1
 mpv 1:0.40.0-7
+mpvpaper 1.8-1
 nano 8.6-1
 neovim 0.11.4-1
 network-manager-applet 1.36.0-1
