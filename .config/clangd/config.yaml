@@ -4,7 +4,7 @@ If:
   PathMatch: [.*\.c, .*\.h]
 CompileFlags:
   Compiler: gcc
-  Add: [-xc, -std=c11, -Wall, -Wextra]
+  Add: [-xc, -Wall, -Wextra]
 
 # Diagnostics:
   # UnusedIncludes: None
@@ -17,9 +17,9 @@ If:
   PathMatch: [.*\.cpp, .*\.hpp]
 CompileFlags:
   Compiler: g++
-  Add: [-xc++, -std=c++11, -Wall, -Wextra]
+  Add: [-xc++, -Wall, -Wextra]
 
 # Diagnostics:
-  # UnusedIncludes: None
-  # Suppress: -Wunused
+#   UnusedIncludes: None
+#   Suppress: -Wunused
 ...

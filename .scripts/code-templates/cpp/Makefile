@@ -8,7 +8,7 @@ OBJECTS = $(CXXFILES:.cpp=.o)
 DEBUG = on
 
 CXX = g++
-CXXFLAGS = -Wall -std=c++11
+CXXFLAGS = -Wall -std=c++23
 TESTFLAGS = -Isrc
 LDLIBS =
 

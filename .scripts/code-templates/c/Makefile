@@ -8,7 +8,7 @@ OBJECTS = $(CFILES:.c=.o)
 DEBUG = on
 
 CC = gcc
-CFLAGS = -Wall -std=c99
+CFLAGS = -Wall -std=c23
 TESTFLAGS = -Isrc
 LDLIBS =
 
