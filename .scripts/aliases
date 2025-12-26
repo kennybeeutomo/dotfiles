@@ -78,6 +78,7 @@ update() {
 		cd ~/dotfiles || exit 1
 		yay -Qe > pacman_packages
 		git add pacman_packages
+		dunstify 'Update Finished'
 	)
 }
 
@@ -96,4 +97,13 @@ condainit() {
 	fi
 	unset __conda_setup
 	# <<< conda initialize <<<
+}
+
+reflector-conf() {
+	# shellcheck disable=SC2046
+	sudo reflector $(cat /etc/xdg/reflector/reflector.conf | sed 's/^#.*$//')
+}
+
+mariadbtest() {
+	mariadb -t -u mariadb test <<< "$*"
 }
