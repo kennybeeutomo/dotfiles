@@ -28,7 +28,7 @@ button {
     padding: 0 5px;
 
     background-color: @background;
-    color: @foreground;
+    color: @primary;
 	border: 1px solid @primary;
 }
 
