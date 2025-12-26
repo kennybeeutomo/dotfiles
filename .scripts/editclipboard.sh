@@ -9,4 +9,9 @@ touch "$file"
 
 wl-paste -n > "$file"
 alacritty --class editClipboard -e "${EDITOR:-nvim}" "$file"
-wl-copy -n < "$file"
+
+if [ -s "$file" ]; then
+	wl-copy -n < "$file"
+else
+	rm "$file"
+fi
