@@ -2,6 +2,13 @@
 
 optionsDir="$XDG_DATA_HOME/dotfiles"
 
+# dotlog <message>
+dotlog() {
+	local logDir="$XDG_CACHE_HOME/dotfiles"
+	[ -d "$logDir" ] || mkdir -p "$logDir"
+	echo "$(date +'%Y-%m-%d-%H-%M-%S-%N'): $*" >> "$logDir/log.txt"
+}
+
 # setoption <option> <value>
 setoption() {
 	mkdir -p "$optionsDir"
@@ -40,12 +47,10 @@ swww-img() {
 wwal() {
 	local cmd='wal --cols16 lighten -n -s'
 
-	local wallpaper="$1"
+	local wallpaper="$1"; shift
 	[ "$wallpaper" = auto ] && wallpaper="$(cat ~/.cache/wal/wal)"
 	[ ! -f "$wallpaper" ] && return 1
 	cmd+=" -i '$wallpaper'"
-
-	shift
 
 	# shellcheck disable=SC2155
 	local backend=$(getoption walbackend wal)
@@ -66,6 +71,9 @@ wwal() {
 			;;
 	esac
 
+	cmd+="$*"
+
+	dotlog "$cmd"
 	eval "$cmd"
 }
 
@@ -80,7 +88,7 @@ pywal() {
 
 	touch "$pywalLockFile"
 
-	wwal "$1" || return 1
+	wwal "$@" || return 1
 	killall -SIGUSR1 nvim -q &
 	wbctl.sh reload &
 
@@ -194,5 +202,10 @@ code() {
 
 	cp -r "$templatesDir/$filetype" "./$projectname"
 	find "./$projectname" -type f -exec sed -i "s/{PROGRAM_NAME}/$projectname/g" {} ';'
-}
 
+	local files
+	files=$(find "./$projectname" -name '{PROGRAM_NAME}')
+	for file in $files; do
+		rename -a '{PROGRAM_NAME}' "$projectname" "$file"
+	done
+}

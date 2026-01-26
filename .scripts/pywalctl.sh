@@ -62,7 +62,7 @@ copyBlackColors() {
 }
 
 getWalScheme() {
-	scheme=$(find "$HOME/.cache/wal/schemes" -name "$1")
+	scheme=$(find "$HOME/.cache/wal/schemes" -maxdepth 1 -name "$1")
 	[ "$(wc -l <<< "$scheme")" -gt 1 ] && return 1
 	[ ! -f "$scheme" ] && return 1
 	echo "$scheme"
