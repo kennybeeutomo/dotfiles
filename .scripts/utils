@@ -38,8 +38,17 @@ pickimg() {
 	swiv -t -o -b -N pickimg "$@"
 }
 
-swww-img() {
-	swww img -t grow --transition-pos top-right --transition-step 13 --transition-fps 144 --transition-duration 0.5 "$@"
+awww-img() {
+	local wallpaper="$1"; shift
+	[ "$wallpaper" = auto ] && wallpaper="$(cat ~/.cache/wal/wal)"
+	[ ! -f "$wallpaper" ] && return 1
+	awww img \
+		-t grow \
+		--transition-pos top-right \
+		--transition-step 13 \
+		--transition-fps 144 \
+		--transition-duration 0.5 \
+		"$wallpaper"
 }
 
 # wwal <wallpaper> | auto
@@ -100,7 +109,7 @@ pywal() {
 # pywal and change wallpaper
 chwal() {
 	pywal "$1" &
-	swww-img "$1"
+	awww-img "$1"
 }
 
 # alias of rofi-dmenu

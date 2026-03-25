@@ -45,7 +45,7 @@ changeWallpaper() {
 
 	case "$action" in
 		chwal ) chwal "$wallpaper" ;;
-		nopywal ) swww-img "$wallpaper" ;;
+		nopywal ) awww-img "$wallpaper" ;;
 		justpywal ) pywal "$wallpaper" ;;
 		* ) return 1 ;;
 	esac
