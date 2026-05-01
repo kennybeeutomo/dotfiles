@@ -59,11 +59,11 @@ label.module {
 }
 
 .modules-left {
-    margin-left: 3;
+    margin-left: 2;
 }
 
 .modules-right {
-    margin-right: 3;
+    margin-right: 2;
 }
 
 @keyframes blink {

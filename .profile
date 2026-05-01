@@ -22,6 +22,7 @@ export PYTHON_HISTORY=$XDG_DATA_HOME/python_history/history
 export PYTHONUSERBASE=$XDG_DATA_HOME/python
 export PYTHONPYCACHEPREFIX=$XDG_CACHE_HOME/python
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export TS_NODE_HISTORY="$XDG_DATA_HOME"/ts_node_repl_history
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export GOPATH="$XDG_DATA_HOME"/go
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
@@ -29,6 +30,7 @@ export GHCUP_USE_XDG_DIRS=1
 export MAVEN_OPTS=-Dmaven.repo.local="$XDG_DATA_HOME"/maven/repository
 export MAVEN_ARGS="--settings $XDG_CONFIG_HOME/maven/settings.xml"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export MARIADB_HISTFILE="$XDG_STATE_HOME"/mariadb_history
 
 # Colors
 export XRES_PATH="$HOME/.cache/wal/colors.Xresources"
