@@ -15,6 +15,8 @@ setopt INTERACTIVE_COMMENTS
 
 fpath+=$ZDOTDIR/.zsh_functions
 
+export PF_INFO='ascii title os host uptime disk palette'
+
 # ---- [ COMPLETION ] ----
 zmodload zsh/complist
 

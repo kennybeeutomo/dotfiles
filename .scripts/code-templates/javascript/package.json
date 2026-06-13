@@ -1,0 +1,9 @@
+{
+  "name": "",
+  "version": "",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "devDependencies": {
+  }
+}

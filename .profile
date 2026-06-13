@@ -31,6 +31,7 @@ export MAVEN_OPTS=-Dmaven.repo.local="$XDG_DATA_HOME"/maven/repository
 export MAVEN_ARGS="--settings $XDG_CONFIG_HOME/maven/settings.xml"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export MARIADB_HISTFILE="$XDG_STATE_HOME"/mariadb_history
+export ANDROID_HOME=/mnt/usb1/android
 
 # Colors
 export XRES_PATH="$HOME/.cache/wal/colors.Xresources"
@@ -45,3 +46,4 @@ export PATH="${PATH}:$HOME/.local/bin"
 export PATH="${PATH}:$HOME/.scripts"
 export PATH="${PATH}:$GOPATH/bin"
 export PATH="${PATH}:$XDG_DATA_HOME/cargo/bin"
+export PATH="${PATH}:/opt/flutter/bin"

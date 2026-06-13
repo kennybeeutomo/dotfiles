@@ -36,6 +36,9 @@ alias fetch='fastfetch'
 t() {
 	trans "$@" | nvimpager
 }
+th() {
+	thesaurus.sh "$@" | nvimpager
+}
 
 alias snvim="sudo -E nvim"
 
@@ -67,6 +70,8 @@ alias pipes='pipes.sh -K -R -s 15 -p 4 -c 1 -c 2 -c 3 -c 4 -c 5 -c 6 -c 7'
 alias lgit='lazygit'
 
 alias lsusb='cyme -l'
+
+alias wooz='wooz --mouse-track --invert-scroll --zoom-in 50%'
 
 touchx() {
 	touch "$@" && chmod +x "$@"
