@@ -41,6 +41,7 @@ th() {
 }
 
 alias snvim="sudo -E nvim"
+alias nv="nvim --cmd 'let g:minimal=v:true'"
 
 alias cfz='nvim $HOME/.config/zsh/.zshrc'
 alias cfh='nvim $HOME/.config/hypr'
@@ -52,8 +53,8 @@ alias cfw='nvim $HOME/.config/waybar'
 alias cfr='nvim $HOME/.config/rofi'
 alias cfs='nvim $HOME/.scripts'
 
-alias todo='nvim -c "Neorg workspace todo"'
-alias notes='nvim -c "Neorg workspace notes"'
+alias todo='nv -c "Neorg workspace todo"'
+alias notes='nv -c "Neorg workspace notes"'
 
 alias exp='experiment.sh existing'
 alias expn='experiment.sh new'

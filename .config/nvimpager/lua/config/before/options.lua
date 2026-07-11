@@ -40,3 +40,6 @@ vim.filetype.add({
 		[".*/uwsm/env.*"] = "sh",
 	},
 })
+
+-- GLOBAL VARIABLES
+vim.g.minimal = vim.g.minimal or true

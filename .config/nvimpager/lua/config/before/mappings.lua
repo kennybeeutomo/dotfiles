@@ -25,6 +25,29 @@ set({"n", "v"}, "<C-h>", "zH")
 -- Options
 set("n", "<leader>tw", function() vim.o.wrap = not vim.o.wrap end, { desc = "Toggle Wrapping" })
 set("n", "<leader>tic", function() vim.o.ignorecase = not vim.o.ignorecase end, { desc = "Toggle Ignore Case" })
+set("n", "<C-o>", utils.cycleNumbers, { desc = "Cycle line number styles" })
+set("n", "<leader>c", utils.toggleConcealCursor, { desc = "Toggle normal concealcursor" })
+
+set("n", "<leader>ls", function()
+	vim.o.laststatus = utils.cycle(vim.o.laststatus, {0, 2})
+end, { desc = "Toggle Status-Line" })
+
+set("n", "<leader>lt", function()
+	vim.o.showtabline = utils.cycle(vim.o.showtabline, {0, 2})
+end, { desc = "Toggle Tab-Line" })
+
+set("n", "<leader>lc", function()
+	vim.o.cmdheight = utils.cycle(vim.o.cmdheight, {0, 1})
+end, { desc = "Toggle Command-Line" })
+
+set("n", "<leader>lf", function()
+	vim.o.foldcolumn = utils.cycle(vim.o.foldcolumn, {"0", "4"})
+end, { desc = "Toggle Fold Column" })
+
+set("n", "<leader>m", function()
+	vim.g.minimal = utils.cycle(vim.g.minimal, {true, false})
+	utils.updateMinimalUI()
+end, { desc = "Toggle Minimal UI" })
 
 -- Selection
 set("n", "<leader>a", "ggVG", { desc = "Select all" })
