@@ -3,9 +3,11 @@ application/pdf=zathura.desktop;
 image/jpeg=gimp.desktop;swiv-jpeg.desktop;
 image/png=gimp.desktop;swiv-png.desktop;
 text/plain=nvim.desktop;
+image/webp=swiv-jpeg.desktop;
 
 [Default Applications]
 application/pdf=zathura.desktop;
 image/jpeg=swiv-jpeg.desktop;
 image/png=swiv-png.desktop;
 text/plain=nvim.desktop
+x-scheme-handler/fdm=freedownloadmanager_fdm_up.desktop

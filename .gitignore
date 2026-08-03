@@ -1,4 +1,5 @@
 .config/wayvnc
 .config/hypr/hyprland-hidden.conf
+.config/hypr/hidden.lua
 .config/hypr/monitors.conf
 .config/bashtop/error.log
