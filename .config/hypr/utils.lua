@@ -2,7 +2,7 @@ local M = {}
 
 local exec = hl.dsp.exec_cmd
 
-local terminal = "alacritty"
+local terminal = "kitty"
 
 function M.terminal(opts)
 	opts = opts or {}

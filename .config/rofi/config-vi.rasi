@@ -2,7 +2,7 @@ configuration {
 	modes: "combi";
 	font: "JetBrainsMono Nerd Font 16";
 	show-icons: true;
-	terminal: "alacritty";
+	terminal: "kitty";
 	icon-theme: "hicolor";
 	drun-display-format: "  {name}";
 	case-sensitive: false;

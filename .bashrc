@@ -27,5 +27,4 @@ function y() {
 # ls colors for fd
 eval "$(dircolors)"
 
-source "${BASH_COMPLETION_USER_FILE:-~/.bash_completion}"/alacritty
 eval "$(zoxide init bash)"

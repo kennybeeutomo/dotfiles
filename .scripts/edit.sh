@@ -11,6 +11,7 @@ declare -A configFiles=(
 	['hyprland']="$HOME/.config/hypr"
 	['nvim']="$HOME/.config/nvim"
 	['alacritty']="$HOME/.config/alacritty/alacritty.toml"
+	['kitty']="$HOME/.config/kitty/kitty.conf"
 	['yazi']="$HOME/.config/yazi"
 	['rofi']="$HOME/.config/rofi"
 	['waybar']="$HOME/.config/waybar"

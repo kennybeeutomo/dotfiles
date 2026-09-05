@@ -164,11 +164,6 @@ bind("SUPER + SHIFT + grave", exec("wbctl.sh toggle"))
 bind("SUPER + CTRL + grave",  exec("wbctl.sh reload"))
 bind("SUPER + ALT + grave",   exec("wbctl.sh pick"))
 
--- Alacritty Opacity Control
-bind("SUPER + O",         exec("ala-opc.sh increase"), { repeating = true })
-bind("SUPER + SHIFT + O", exec("ala-opc.sh decrease"), { repeating = true })
-bind("SUPER + CTRL + O",  exec("ala-opc.sh reset"))
-
 -- Music/Audio Control
 bind("SUPER + bracketLeft",        exec("mpc toggle"))
 bind("SUPER + bracketRight",       exec("mpc clear"))

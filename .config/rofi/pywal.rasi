@@ -1,7 +1,7 @@
 @import "~/.cache/wal/colors-rofi-dark"
 
 * {
-    selected-active-foreground: @background;
-    selected-normal-foreground: @background;
-    selected-urgent-foreground: @background;
+	selected-active-foreground: @background;
+	selected-normal-foreground: @background;
+	selected-urgent-foreground: @background;
 }

@@ -51,6 +51,7 @@ alias cfu='nvim $HOME/.config/uwsm'
 alias cfa='nvim $HOME/.scripts/aliases'
 alias cfw='nvim $HOME/.config/waybar'
 alias cfr='nvim $HOME/.config/rofi'
+alias cft='nvim $HOME/.config/kitty/kitty.conf'
 alias cfs='nvim $HOME/.scripts'
 
 alias todo='nv -c "Neorg workspace todo"'

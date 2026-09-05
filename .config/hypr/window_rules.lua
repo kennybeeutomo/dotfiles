@@ -48,7 +48,8 @@ rule({
 	no_focus = true,
 	no_anim = true,
 	border_size = 0,
-	rounding = 0
+	rounding = 0,
+	opaque = true,
 })
 
 rule({

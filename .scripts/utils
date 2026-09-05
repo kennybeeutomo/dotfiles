@@ -150,7 +150,7 @@ persisterm() {
 	local class=$1; shift
 	[ ! -d "$wd" ] && return 1
 	[ "$class" = '-' ] && class='persisterm'
-	NOFETCH=1 alacritty --class "$class" --working-directory "$wd" -e zsh -c "$*; zsh"
+	NOFETCH=1 kitty --class "$class" -d "$wd" zsh -c "$*; zsh"
 }
 
 # persistvim <class> <file>
