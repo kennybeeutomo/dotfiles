@@ -89,7 +89,7 @@ precmd() {
 
 # ---- [ ZLE WIDGETS ] ----
 
-# bar cursor for vi insert mode
+# Bar cursor for vi insert mode
 updateCursor() {
 	case $KEYMAP in
 		viins|main ) printf '\e[6 q' ;;
@@ -111,12 +111,30 @@ edit-command-line-update() {
 }
 zle -N edit-command-line-update
 
+# Open yazi and save current line
 zle-yazi() {
 	zle kill-buffer
 	BUFFER='y'
 	zle accept-line
 }
 zle -N zle-yazi
+
+# Sync with system clipboard
+clipboard() {
+	wl-copy "$CUTBUFFER"
+}
+
+clipboard-yank() {
+	zle vi-yank
+	clipboard
+}
+zle -N clipboard-yank
+
+clipboard-delete() {
+	zle vi-delete
+	clipboard
+}
+zle -N clipboard-delete
 
 # ---- [ KEY MAPPINGS ] ----
 
@@ -136,6 +154,8 @@ bindkey -M viins "^Y"      zle-yazi
 bindkey -M vicmd "^Y"      zle-yazi
 bindkey -M vicmd "^N"      edit-command-line-update
 bindkey -M viins "^N"      edit-command-line-update
+bindkey -M vicmd "y"       clipboard-yank
+bindkey -M vicmd "d"       clipboard-delete
 
 # ---- [ ALIASES ] ----
 [ -f ~/.scripts/aliases ] && source ~/.scripts/aliases
