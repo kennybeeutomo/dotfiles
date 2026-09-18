@@ -1,7 +1,5 @@
 local M = {}
 
-local exec = hl.dsp.exec_cmd
-
 local terminal = "kitty"
 
 function M.terminal(opts)
@@ -19,7 +17,26 @@ function M.terminal(opts)
 		}
 	end
 
-	return exec(terminal .. opts.args, rules)
+	return hl.dsp.exec_cmd(terminal .. opts.args, rules)
+end
+
+function M.rule(rule)
+	if rule.name == nil then
+		table.insert(Window_Rules, hl.window_rule(rule))
+	else
+		Window_Rules[rule.name] = hl.window_rule(rule)
+	end
+end
+
+function M.log(msg)
+	hl.exec_cmd("dunstify " .. msg)
+end
+
+function M.toggle_rule(rule_name)
+	return function()
+		local rule = Window_Rules[rule_name]
+		rule:set_enabled(not rule:is_enabled())
+	end
 end
 
 return M

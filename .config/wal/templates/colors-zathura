@@ -6,7 +6,7 @@ set completion-highlight-bg "{foreground}"
 set completion-highlight-fg "{background}"
 
 set recolor-lightcolor "{background}"
-set recolor-darkcolor "{foreground}"
+set recolor-darkcolor "{color12}"
 set default-bg "{background}"
 
 set inputbar-bg "{background}"

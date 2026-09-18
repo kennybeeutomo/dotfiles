@@ -1,4 +1,5 @@
-local rule = hl.window_rule
+local utils = require("utils")
+local rule = utils.rule
 
 rule({
 	-- Ignore maximize requests from all apps. You'll probably like this.
@@ -33,6 +34,7 @@ local mpv_pattern = "(^mpv$)"
 local ueberzugpp_pattern = "(^ueberzugpp.*$)"
 local pickimg_pattern = "(^pickimg$)"
 local browser_pattern = "(^firefox$)"
+local pdf_viewer_pattern = "(^org.pwmt.zathura$)"
 
 rule({
 	name = "pickimg",
@@ -85,4 +87,10 @@ rule({
 	name = "browser",
 	match = { class = browser_pattern },
 	opaque = true
+})
+
+rule({
+	name = "pdf-viewers",
+	match = { class = pdf_viewer_pattern },
+	opacity = 0.9
 })

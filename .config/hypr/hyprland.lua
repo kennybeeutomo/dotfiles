@@ -1,3 +1,4 @@
+require("globals") -- Global Variables
 require("monitors") -- Monitors
 require("autostart") -- Autostart
 require("fixes") -- Fixes
