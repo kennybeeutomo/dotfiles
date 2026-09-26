@@ -19,6 +19,7 @@ map e scroll half-up
 map <C-e> feedkeys :source<Return>
 map <Space> toggle_fullscreen
 map <S-Space> toggle_page_mode
+map <C-i> exec "hyprctl eval 'require(\"utils\").toggle_rule(\"pdf-viewers\")()'"
 
 map [fullscreen] d scroll half-down
 map [fullscreen] u scroll half-up
@@ -26,3 +27,4 @@ map [fullscreen] e scroll half-up
 map [fullscreen] <C-e> feedkeys :source<Return>
 map [fullscreen] <Space> toggle_fullscreen
 map [fullscreen] <S-Space> toggle_page_mode
+map [fullscreen] <C-i> exec "hyprctl eval 'require(\"utils\").toggle_rule(\"pdf-viewers\")()'"

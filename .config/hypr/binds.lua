@@ -198,7 +198,6 @@ bind("SUPER + ALT + 5",        utils.terminal({ args = " -e clock.sh", floating 
 bind("SUPER + CTRL + ALT + 5", utils.terminal({ args = " -e clock.sh nodate", floating = true }))
 bind("SUPER + Z",              exec("editclipboard.sh"))
 bind("SUPER + F2",             exec("cpulimiter.sh"))
-bind("SUPER + ALT + 0",        utils.toggle_rule("pdf-viewers"))
 
 -- Laptop fn keys
 bind("XF86AudioRaiseVolume",  exec("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+"), { repeating = true, locked = true })
