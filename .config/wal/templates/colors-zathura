@@ -28,4 +28,4 @@ set render-loading-fg "{color12}"
 
 set highlight-active-color "rgba({color14.rgb}, 0.5)"
 set highlight-color "rgba({color6.rgb}, 0.5)"
-set highlight-fg "{color12}"
+set highlight-fg "{color14}"
