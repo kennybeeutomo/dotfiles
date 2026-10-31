@@ -35,11 +35,14 @@ hl.config({
 			color = "#1a1a1aee",
 		},
 
+		motion_blur = {
+			enabled = true,
+		},
+
 		blur = {
 			enabled = true,
-			size = 2,
-			passes = 2,
-			vibrancy = 0.1696,
+			size = 6,
+			passes = 1,
 		},
 	},
 
