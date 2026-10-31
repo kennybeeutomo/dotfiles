@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Rofi script to search books
+# Dependencies: fd
 
 # shellcheck disable=SC1090
 source ~/.scripts/utils
@@ -14,4 +15,4 @@ dir=$(ls "$booksDir" | $rofi)
 file="$booksDir/$dir/$(fd --base-directory "$booksDir/$dir" -e pdf -e epub | $rofi)"
 [ -z "$file" ] || [ -d "$file" ] && exit 1
 
-zathura "$file"
+xdg-open "$file"
