@@ -21,7 +21,7 @@ while [ -n "$1" ]; do
 done
 
 # shellcheck disable=SC2012
-language=$(ls "$templatesDir" | rmenu -p 'Experiment')
+language=$( (ls "$templatesDir" && ls "$experimentsDir") | sort | uniq | rmenu -p 'Experiment')
 [ -z "$language" ] && exit 1
 experimentDir="$experimentsDir/$language"
 
