@@ -1,6 +1,6 @@
 (
 	album_art: (
-		method: None,
+		method: Auto,
 	),
 	keybinds: (
         global: {
