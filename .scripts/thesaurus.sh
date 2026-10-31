@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Script to look up thesaurus of a word on thesaurus.com
+# Todo: use pup to parse html
 
 curl --silent "https://www.thesaurus.com/browse/$1" |
 

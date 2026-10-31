@@ -36,6 +36,7 @@ alias fetch='fastfetch'
 t() {
 	trans "$@" | nvimpager
 }
+
 th() {
 	thesaurus.sh "$@" | nvimpager
 }
@@ -114,3 +115,15 @@ reflector-conf() {
 mariadbtest() {
 	mariadb -t -u mariadb test <<< "$*"
 }
+
+# execfor <cmd> (<file> ...)
+# Executes <cmd> for each <file>
+execfor() {
+	local cmd=$1
+	shift
+	local files=("$@")
+	for f in "${files[@]}"; do
+		eval "$cmd \"$f\""
+	done
+}
+

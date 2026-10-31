@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Script to make image viewing better
+# Image viewer script
+# Dependencies: swiv
 
 [[ $# -lt 1 ]] && exit 1
 

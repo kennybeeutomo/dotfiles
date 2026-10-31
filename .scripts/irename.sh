@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# script to interactively rename files in editor
+# Script to interactively rename files in editor
 
 tempDir='/tmp/irename'
 

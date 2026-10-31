@@ -108,8 +108,8 @@ pywal() {
 
 # pywal and change wallpaper
 chwal() {
-	pywal "$1" &
-	awww-img "$1"
+	awww-img "$1" &
+	pywal "$1"
 }
 
 # alias of rofi-dmenu
@@ -164,40 +164,17 @@ persistvim() {
 	persisterm "$wd" "$class" "nvim '$file'" "$@"
 }
 
-# execfor <cmd> (<file> ...)
-# Executes <cmd> for each <file>
-execfor() {
-	local cmd=$1
-	shift
-	local files=("$@")
-	for f in "${files[@]}"; do
-		eval "$cmd \"$f\""
-	done
-}
+# arename <file name> <suffix>
+# Appends <suffix> at the end of <file name>'s basename
+arename() {
+	input=$1
+	suffix=$2
 
-# jqCopyValue <src> <dest> <variable>
-# Copy the value of <variable> from <src> to <dest>
-jqCopyValue() {
-	local src=$1
-	local dest=$2
-	local var=$3
+	base=${input%%.*}
+	extension=${input#"$base"}
+	output=${base}${suffix}${extension}
 
-	local srcValue; srcValue=$(jq "$var" "$src") || return 1
-	local result; result=$(jq "$var |= $srcValue" "$dest") || return 1
-	echo "$result" > "$dest"
-}
-
-# jqEqualValue <file a> <file b> <variable>
-# Test if the value of <variable> in <file a> and in <file b> is equal
-jqEqualValue() {
-	local a=$1
-	local b=$2
-	local var=$3
-
-	local aValue; aValue=$(jq "$var" "$a") || return 1
-	local bValue; bValue=$(jq "$var" "$b") || return 1
-
-	[ "$aValue" = "$bValue" ]
+	echo "$output"
 }
 
 # code <type> <project name>

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# script to display clock
+# Script to display clock
+# Dependencies: figlet
 
 tput civis # hide cursor
 tput smcup # save screen

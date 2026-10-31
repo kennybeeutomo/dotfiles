@@ -18,6 +18,6 @@ trap "cleanup '$SCR_IMG'" EXIT
 
 "$screenshot" selection "$SCR_IMG/scr.png" || die "Text extraction cancelled"
 mogrify -modulate 100,0 -resize 400% "$SCR_IMG/scr.png"
-tesseract "$SCR_IMG/scr.png" "$SCR_IMG/scr" -l chi_sim+jpn+eng # &> /dev/null
+tesseract "$SCR_IMG/scr.png" "$SCR_IMG/scr" -l eng # &> /dev/null
 wl-copy < "$SCR_IMG/scr.txt"
 success "Text extracted from image"

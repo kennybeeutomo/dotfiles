@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Script to change wallpaper and automate pywal
+# Dependencies: pywal16 jq rofi awww
 
 # shellcheck disable=SC1090
 source ~/.scripts/utils
@@ -51,6 +52,31 @@ changeWallpaper() {
 	esac
 }
 
+
+# jqCopyValue <src> <dest> <variable>
+# Copy the value of <variable> from <src> to <dest>
+jqCopyValue() {
+	local src=$1
+	local dest=$2
+	local var=$3
+
+	local srcValue; srcValue=$(jq "$var" "$src") || return 1
+	local result; result=$(jq "$var |= $srcValue" "$dest") || return 1
+	echo "$result" > "$dest"
+}
+
+# jqEqualValue <file a> <file b> <variable>
+# Test if the value of <variable> in <file a> and in <file b> is equal
+jqEqualValue() {
+	local a=$1
+	local b=$2
+	local var=$3
+
+	local aValue; aValue=$(jq "$var" "$a") || return 1
+	local bValue; bValue=$(jq "$var" "$b") || return 1
+
+	[ "$aValue" = "$bValue" ]
+}
 
 copyBlackColors() {
 	local src=$1

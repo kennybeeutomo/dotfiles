@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Screenshot script
+# Dependencies: grim wayfreeze
 
 exitCode=0
 

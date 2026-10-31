@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# script to download pinterest content in source quality
+# Script to download pinterest content in source quality
+# Dependencies: wget yt-dlp
+# Todo: use pup to parse html
 
 href=$1
 ext=${2:-jpg}

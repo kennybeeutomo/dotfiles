@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Similar script to ocr.sh but to scan qr
+# Dependencies: wl-clipboard zbar
 
 # shellcheck disable=SC1090
 source ~/.scripts/utils

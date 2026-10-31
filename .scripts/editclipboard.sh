@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Script to edit clipboard in nvim
+# Dependencies: wl-clipboard
 
 clipboardDir="$HOME/clipboard"
 

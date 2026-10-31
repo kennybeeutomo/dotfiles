@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Similar to Wlogout
+# Dependencies: uwsm
 
 # shellcheck disable=SC1090
 source ~/.scripts/utils

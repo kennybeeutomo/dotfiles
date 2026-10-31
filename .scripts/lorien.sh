@@ -5,4 +5,4 @@ lorien &
 sleep 0.7
 
 # Hide toolbar
-hyprctl dispatch sendshortcut ,TAB, 'class:(^Lorien$)'
+hyprctl dispatch 'hl.dsp.send_shortcut({ key = "TAB", window = "class:(^Lorien$)" })'

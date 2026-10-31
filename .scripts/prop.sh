@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Output window class and title through dunstify
+# Dependencies: dunst jq hyprprop
 
 IFS=$'\n'
 
