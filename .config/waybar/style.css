@@ -10,40 +10,40 @@
 @define-color barborder @secondary;
 
 * {
-    font-family: JetBrainsMono Nerd Font;
-    font-size: 12px;
+	font-family: JetBrainsMono Nerd Font;
+	font-size: 12px;
 }
 
 window#waybar {
-    background-color: @barcolor;
-    color: @foreground;
-    /* border-bottom: 1px solid @barbordercolor; */
+	background-color: @barcolor;
+	color: @foreground;
+	/* border-bottom: 1px solid @barbordercolor; */
 
-    transition-property: background-color;
-    transition-duration: .5s;
+	transition-property: background-color;
+	transition-duration: .5s;
 }
 
 button {
 	margin: 3 3 0 3px;
-    padding: 0 5px;
+	padding: 0 5px;
 
-    background-color: @background;
-    color: @primary;
+	background-color: @background;
+	color: @primary;
 	border: 1px solid @primary;
 }
 
 button:hover {
-    background-color: @highlight;
+	background-color: @highlight;
 }
 
 #workspaces button.active {
-    background: @primary;
-    color: @background;
+	background: @primary;
+	color: @background;
 }
 
 #workspaces button.urgent {
-    background-color: @color9;
-    color: @background;
+	background-color: @color9;
+	color: @background;
 }
 
 #tray,
@@ -51,37 +51,38 @@ label.module {
 	margin: 3 3 0 3px;
 	padding: 0 10px;
 
-    color: @primary;
-    background-color: @background;
+	color: @primary;
+	background-color: @background;
 
 	border-radius: 4px;
 	border: 1px solid @primary;
 }
 
 .modules-left {
-    margin-left: 2;
+	margin-left: 2;
 }
 
 .modules-right {
-    margin-right: 2;
+	margin-right: 2;
 }
 
 @keyframes blink {
-    to {
-        background-color: @highlight;
-    }
+to {
+	background-color: @highlight;
+}
 }
 
 #battery.critical:not(.charging) {
-    animation-name: blink;
-    animation-duration: 0.1s;
-    animation-timing-function: steps(60);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+	animation-name: blink;
+	animation-duration: 0.1s;
+	animation-timing-function: steps(60);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
 
 #network.disconnected,
 #wireplumber.muted,
 #temperature.critical {
-    background-color: @warning;
+	background-color: @warning;
+	color: @background;
 }
