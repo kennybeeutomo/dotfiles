@@ -1,6 +1,6 @@
 local M = {}
 
-local terminal = "kitty"
+local terminal = "kitty "
 
 function M.terminal(opts)
 	opts = opts or {}

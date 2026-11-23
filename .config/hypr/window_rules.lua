@@ -25,15 +25,16 @@ rule({
 })
 
 local edit_menu_pattern = "(^edit.sh$)"
+local edit_clipboard_pattern = "(^editClipboard.sh$)"
+local experiment_pattern = "(^experiment.sh$)"
+local trans_pattern = "(^trans.sh$)"
 local python_pattern = "(^python3$)"
 local thunar_pattern = "(^T|thunar$)"
 local lorien_pattern = "(^Lorien$)"
-local edit_clipboard_pattern = "(^editClipboard$)"
-local experiment_pattern = "(^experiment.sh$)"
 local mpv_pattern = "(^mpv$)"
 local ueberzugpp_pattern = "(^ueberzugpp.*$)"
 local pickimg_pattern = "(^pickimg$)"
-local browser_pattern = "(^firefox$)"
+local noblur_pattern = "(^firefox$)|(^gimp$)"
 local pdf_viewer_pattern = "(^org.pwmt.zathura$)"
 
 rule({
@@ -58,11 +59,12 @@ rule({
 	name = "floating",
 	match = {
 		class = edit_menu_pattern ..
+				"|" .. edit_clipboard_pattern ..
+				"|" .. experiment_pattern ..
+			  "|" .. trans_pattern ..
 				"|" .. python_pattern ..
 				"|" .. thunar_pattern ..
 				"|" .. lorien_pattern ..
-				"|" .. edit_clipboard_pattern ..
-				"|" .. experiment_pattern ..
 				"|" .. mpv_pattern
 	},
 	float = true,
@@ -84,8 +86,8 @@ rule({
 })
 
 rule({
-	name = "browser",
-	match = { class = browser_pattern },
+	name = "noblur",
+	match = { class = noblur_pattern },
 	opaque = true
 })
 

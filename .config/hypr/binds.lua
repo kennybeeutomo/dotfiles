@@ -18,7 +18,6 @@ bind("SUPER + SPACE",   hl.dsp.window.float())
 bind("SUPER + V",       hl.dsp.layout("togglesplit"), { repeating = true })
 bind("SUPER + ALT + F", hl.dsp.window.fullscreen())
 bind("SUPER + C",       hl.dsp.window.center())
-bind("SUPER + T",       hl.dsp.window.pin())
 
 -- Move Focus
 bind("SUPER + H", hl.dsp.focus({ direction = "left" }), { repeating = true })
@@ -152,10 +151,10 @@ bind("SUPER + SHIFT + ALT + W", exec("pywalctl.sh toggleBlackColors"))
 
 -- Launch Programs
 bind("SUPER + E",         exec("thunar"))
-bind("SUPER + Y",         utils.terminal({ args = " -e yazi", floating = true }))
+bind("SUPER + Y",         utils.terminal({ args = "yazi", floating = true }))
 bind("SUPER + D",         exec("firefox"))
 bind("SUPER + SHIFT + D", exec("firefox --private-window"))
-bind("SUPER + M",         utils.terminal({ args = " -e rmpc", floating = true }))
+bind("SUPER + M",         utils.terminal({ args = "rmpc", floating = true }))
 bind("SUPER + A",         exec("lorien.sh", { floating = true }))
 
 -- Waybar Control
@@ -181,7 +180,7 @@ bind("SUPER + SHIFT + apostrophe", exec("toggleReverb.sh 'Firefox'"))
 bind("SUPER + G",         exec("screenshot.sh selection"))
 bind("SUPER + CTRL + G",  exec("screenshot.sh fullscreen"))
 bind("SUPER + SHIFT + G", exec("ocr.sh"))
-bind("SUPER + ALT + G",   utils.terminal({ args = ' -e yazi "$HOME/Pictures/Screenshots"', floating = true }))
+bind("SUPER + ALT + G",   utils.terminal({ args = 'yazi "$HOME/Pictures/Screenshots"', floating = true }))
 bind("SUPER + ALT + 2",   exec("qrscan.sh"))
 
 -- Dunst
@@ -192,12 +191,13 @@ bind("SUPER + SHIFT + X", exec("systemctl --user restart dunst.service"), { repe
 bind("SUPER + SHIFT + P",      exec("prop.sh"))
 bind("SUPER + backslash",      exec("hyprlock"))
 bind("SUPER + ALT + 1",        exec("hyprpicker -a"))
-bind("SUPER + ALT + 3",        utils.terminal({ args = " -e colorscripts.sh", floating = true }))
-bind("SUPER + CTRL + ALT + 3", utils.terminal({ args = " -e nvim -R ~/.cache/wal/colors-readable.txt", floating = true }))
-bind("SUPER + ALT + 5",        utils.terminal({ args = " -e clock.sh", floating = true }))
-bind("SUPER + CTRL + ALT + 5", utils.terminal({ args = " -e clock.sh nodate", floating = true }))
+bind("SUPER + ALT + 3",        utils.terminal({ args = "colorscripts.sh", floating = true }))
+bind("SUPER + CTRL + ALT + 3", utils.terminal({ args = "nvim -R ~/.cache/wal/colors-readable.txt", floating = true }))
+bind("SUPER + ALT + 5",        utils.terminal({ args = "clock.sh", floating = true }))
+bind("SUPER + CTRL + ALT + 5", utils.terminal({ args = "clock.sh nodate", floating = true }))
 bind("SUPER + Z",              exec("editclipboard.sh"))
 bind("SUPER + F2",             exec("cpulimiter.sh"))
+bind("SUPER + T",              exec("trans.sh rofi"))
 
 -- Laptop fn keys
 bind("XF86AudioRaiseVolume",  exec("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+"), { repeating = true, locked = true })

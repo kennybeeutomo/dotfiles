@@ -34,11 +34,11 @@ alias info='info --vi-keys'
 alias fetch='fastfetch'
 
 t() {
-	trans "$@" | nvimpager
+	trans.sh cli "$@"
 }
 
 th() {
-	thesaurus.sh "$@" | nvimpager
+	thesaurus.sh "$@" | nvimpager -p
 }
 
 alias snvim="sudo -E nvim"
@@ -54,6 +54,7 @@ alias cfw='nvim $HOME/.config/waybar'
 alias cfr='nvim $HOME/.config/rofi'
 alias cft='nvim $HOME/.config/kitty/kitty.conf'
 alias cfs='nvim $HOME/.scripts'
+alias cfe='nvim $HOME/.profile'
 
 alias todo='nv -c "Neorg workspace todo"'
 alias notes='nv -c "Neorg workspace notes"'
