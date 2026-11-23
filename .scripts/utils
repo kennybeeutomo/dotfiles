@@ -114,7 +114,7 @@ chwal() {
 
 # alias of rofi-dmenu
 rmenu() {
-	rofi -x11 -dmenu -i -no-custom "$@"
+	rofi -dmenu -i "$@"
 }
 
 # alias of rofi-dmenu with vim bindings
