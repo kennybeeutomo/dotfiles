@@ -1,6 +1,7 @@
 {
-	"name": "",
-	"version": "",
+	"$schema": "https://www.schemastore.org/package.json",
+	"name": "template",
+	"version": "0.0.1",
 	"scripts": {
 		"start": "tsx ./src/index.ts"
 	},

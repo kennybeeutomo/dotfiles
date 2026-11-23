@@ -1,9 +1,10 @@
 {
-  "name": "",
-  "version": "",
-  "scripts": {
-    "start": "node ./src/index.js"
-  },
-  "devDependencies": {
-  }
+	"$schema": "https://www.schemastore.org/package.json",
+	"name": "template",
+	"version": "0.0.1",
+	"scripts": {
+		"start": "node ./src/index.js"
+	},
+	"devDependencies": {
+	}
 }
