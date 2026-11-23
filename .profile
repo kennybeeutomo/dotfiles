@@ -30,6 +30,7 @@ export GHCUP_USE_XDG_DIRS=1
 export MAVEN_OPTS=-Dmaven.repo.local="$XDG_DATA_HOME"/maven/repository
 export MAVEN_ARGS="--settings $XDG_CONFIG_HOME/maven/settings.xml"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export JAVA_HOME=/usr/lib/jvm/java-27-openjdk/
 export MARIADB_HISTFILE="$XDG_STATE_HOME"/mariadb_history
 export ANDROID_HOME=/mnt/usb1/android
 
