@@ -1,24 +1,9 @@
-configuration {
-	modes: "combi";
-	font: "JetBrainsMono Nerd Font 16";
-	show-icons: true;
-	terminal: "kitty";
-	icon-theme: "hicolor";
-	drun-display-format: "  {name}";
-	case-sensitive: false;
-	combi-modes: "drun,run";
-	matching: "normal,fuzzy";
+@import "./config.rasi"
 
-	kb-remove-char-forward: "Delete";
-	kb-remove-to-eol: "";
-	kb-remove-to-sol: "";
+configuration {
 	kb-accept-entry: "Return,space";
 	kb-element-next: "j,Tab";
 	kb-element-prev: "k,ISO_Left_Tab";
 	kb-page-prev: "u,Ctrl+u";
 	kb-page-next: "d,Ctrl+d";
-	kb-matcher-up: "Ctrl+comma";
-	kb-mather-down: "Ctrl+period";
 }
-
-@theme "pywal"
